@@ -8,32 +8,47 @@ var Enemy_01 = cc.Sprite.extend({
         this.x = 350;
         this.y = 600;
         this.gameTicks = 0;
+        this.distanceToPlayer = 0;
+        this.GameOver = 0;
         //W = 87
         //A = 65
         //S = 83
         //D = 68
     },
     update:function(dt){
-        this.x = (240 * Math.sin((this.gameTicks * 0.5 * Math.PI)/80)) + 350;
-        this.gameTicks++;
-        if(this.x >= 1250)
+        if(this.GameOver == 0)
         {
-            this.x = 1250;
-        }
-        else if(this.x <= 30)
-        {
-            this.x = 30;
-        }
+            this.x = (240 * Math.sin((this.gameTicks * 0.5 * Math.PI)/80)) + 350;
+            this.gameTicks++;
+            if(this.x >= 1250)
+            {
+                this.x = 1250;
+            }
+            else if(this.x <= 30)
+            {
+                this.x = 30;
+            }
 
-        if(this.y >= 710)
-        {
-            this.y = 710;
+            if(this.y >= 710)
+            {
+                this.y = 710;
+            }
+            else if(this.y <= 10)
+            {
+                this.y = 10;
+            }
+            this.rotate();
+            this.distanceToPlayer = Math.sqrt((MW.PLAYER.x-this.x) * (MW.PLAYER.x-this.x) + (MW.PLAYER.y-this.y) * (MW.PLAYER.y-this.y));
+            if(this.distanceToPlayer < 40)
+            {
+                var actionTo = new cc.MoveTo(2, cc.p(MW.PLAYER.x, MW.PLAYER.y));
+                this.Enemy1.runAction(new cc.Sequence(actionTo));
+                this.GameOver = 1;
+                cc.log("GameOver0");
+                cc.director.runScene(new GameOver());
+
+            }
         }
-        else if(this.y <= 10)
-        {
-            this.y = 10;
-        }
-        this.rotate();
     },
     rotate:function(){
         var angle = Math.atan2(MW.PLAYER.x-this.x, MW.PLAYER.y-this.y);

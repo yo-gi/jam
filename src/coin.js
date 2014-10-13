@@ -7,6 +7,7 @@ var Coin = cc.Sprite.extend({
         this.y = 300;
     },
     update:function(dt){
+
     },
     init:function () {
         this._super();

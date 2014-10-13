@@ -60,11 +60,14 @@ var Player = cc.Sprite.extend({
         MW.PLAYER.y = this.y;
         var angle = Math.atan2(MW.MOUSE.x-this.x,MW.MOUSE.y-this.y);
         angle = angle * (180/Math.PI);
+        cc.log("velX = " + this.velX + " velY = " + this.velY + " X " + this.x + " Y " + this.y);
         this.setRotation(angle);
     },
     init:function () {
         this._super();
         //create the hero sprite
+        this.velX = 0;
+        this.velY = 0;
         this.mainPlayer = new cc.Sprite(res.Player_png);
         this.addChild(this.mainPlayer);
         this.mainPlayer.setPosition(new cc.Point(this.x,this.y));

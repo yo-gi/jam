@@ -21,8 +21,10 @@
         "src/EventHandler.js",
         "src/ShadowLayer.js",
         "src/map01.js",
+        "src/Enemy.js",
         "src/Enemy_01.js",
         "src/Enemy_02.js",
-        "src/coin.js"
+        "src/coin.js",
+        "src/GameOver.js"
     ]
 }
