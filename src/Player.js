@@ -10,10 +10,10 @@ var Player = cc.Sprite.extend({
         this.velY = 0;
         this.speed = 4.5;
         this.friction = 0.85;
-        //W = 87
-        //A = 65
-        //S = 83
-        //D = 68
+//W = 87
+//A = 65
+//S = 83
+//D = 68
     },
     update:function(dt){
         if (MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) {
@@ -40,7 +40,6 @@ var Player = cc.Sprite.extend({
         this.y += this.velY;
         this.velX *= this.friction;
         this.x += this.velX;
-
         if(this.x >= 1250)
         {
             this.x = 1250;
@@ -49,7 +48,6 @@ var Player = cc.Sprite.extend({
         {
             this.x = 30;
         }
-
         if(this.y >= 710)
         {
             this.y = 710;
@@ -58,17 +56,13 @@ var Player = cc.Sprite.extend({
         {
             this.y = 10;
         }
-        MW.PLAYER.x = this.x;
-        MW.PLAYER.y = this.y;
-
         var angle = Math.atan2(MW.MOUSE.x-this.x,MW.MOUSE.y-this.y);
         angle = angle * (180/Math.PI);
         this.setRotation(angle);
     },
     init:function () {
         this._super();
-
-        //create the hero sprite
+//create the hero sprite
         this.mainPlayer = new cc.Sprite(res.Player_png);
         this.addChild(this.mainPlayer);
         this.mainPlayer.setPosition(new cc.Point(this.x,this.y));
