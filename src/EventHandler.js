@@ -3,8 +3,6 @@ MW.KEYS = [];
 MW.MOUSE = {};
 MW.MOUSE.x = 0;
 MW.MOUSE.y = 0;
-GX = 0;
-GY = 0;
 
 MW.PLAYER = {};
 MW.PLAYER.x = 0;
