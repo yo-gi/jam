@@ -1,5 +1,7 @@
 var MW = MW || {};
 MW.KEYS = [];
+GX = 0;
+GY = 0;
 
 var GameLayer = cc.Layer.extend({
 
@@ -17,6 +19,13 @@ var GameLayer = cc.Layer.extend({
             },
             onKeyReleased:function (key, event) {
                 MW.KEYS[key] = false;
+            }
+        }, this);
+        cc.eventManager.addListener({
+            event: cc.EventListener.MOUSE,
+            onMouseMove: function(event){
+                //var str = "MousePosition X: " + event.getLocationX() + "  Y:" + event.getLocationY();
+                //cc.log(str);
             }
         }, this);
     }

@@ -5,6 +5,7 @@ var Player = cc.Sprite.extend({
         var winsize = cc.director.getWinSize();
         this._super();
         this.init();
+        //
         this.x = winsize.width / 2;
         this.y = winsize.height / 2;
         this.velX = 0;
@@ -59,7 +60,9 @@ var Player = cc.Sprite.extend({
         {
             this.y = 10;
         }
-
+/*        var angle = Math.atan2(GX-this.x,GY-this.y);
+        angle = angle * (180/Math.PI);
+        this.currentRotation = angle;*/
     },
     init:function () {
         this._super();
