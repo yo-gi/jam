@@ -65,57 +65,52 @@ var BackgroundLayer = cc.Layer.extend({
         //this.drawLines(Math.floor(Math.random() * 400) + 1, Math.floor(Math.random() * 400) + 1);
     },
     loadSegments: function() {
-        this.segments = [
-            {a:{x:0,y:0}, b:{x:640,y:0}},
-            {a:{x:640,y:0}, b:{x:640,y:360}},
-            {a:{x:640,y:360}, b:{x:0,y:360}},
-            {a:{x:0,y:360}, b:{x:0,y:0}},
-            // Polygon #1
-            {a:{x:100,y:150}, b:{x:120,y:50}},
-            {a:{x:120,y:50}, b:{x:200,y:80}},
-            {a:{x:200,y:80}, b:{x:140,y:210}},
-            {a:{x:140,y:210}, b:{x:100,y:150}},
-            // Polygon #2
-            {a:{x:100,y:200}, b:{x:120,y:250}},
-            {a:{x:120,y:250}, b:{x:60,y:300}},
-            {a:{x:60,y:300}, b:{x:100,y:200}},
-            // Polygon #3
-            {a:{x:200,y:260}, b:{x:220,y:150}},
-            {a:{x:220,y:150}, b:{x:300,y:200}},
-            {a:{x:300,y:200}, b:{x:350,y:320}},
-            {a:{x:350,y:320}, b:{x:200,y:260}},
-            // Polygon #4
-            {a:{x:340,y:60}, b:{x:360,y:40}},
-            {a:{x:360,y:40}, b:{x:370,y:70}},
-            {a:{x:370,y:70}, b:{x:340,y:60}},
-            // Polygon #5
-            {a:{x:450,y:190}, b:{x:560,y:170}},
-            {a:{x:560,y:170}, b:{x:540,y:270}},
-            {a:{x:540,y:270}, b:{x:430,y:290}},
-            {a:{x:430,y:290}, b:{x:450,y:190}},
-            // Polygon #6
-            {a:{x:400,y:95}, b:{x:580,y:50}},
-            {a:{x:580,y:50}, b:{x:480,y:150}},
-            {a:{x:480,y:150}, b:{x:400,y:95}}
-        ]
+        // Map segments
+        for (var j = 0; j < map01.length; ++j) {
+            var base = map01[j][0];
+            var points = map01[j][1];
+            cc.log(map01);
+            cc.log(points);
+            for (var i = 0; i < points.length - 1; ++i) {
+                var x1, x2, y1, y2;
+                x1 = base.x + points[i].x;
+                y1 = base.y + points[i].y;
+                x2 = base.x + points[i+1].x;
+                y2 = base.y + points[i+1].y;
+                var point = {a:{x:x1, y:y1}, b:{x:x2, y:y2}};
+                MW.SEGMENTS.push(point);
+            }
+            x1 = base.x + points[points.length-1].x;
+            y1 = base.y + points[points.length-1].y;
+            x2 = base.x + points[0].x;
+            y2 = base.y + points[0].y;
+            var point = {a:{x:x1, y:y1}, b:{x:x2, y:y2}};
+            MW.SEGMENTS.push(point);
+        }
+        //corner segments
+        MW.SEGMENTS.push({a: {x: 0, y: 0}, b:{x: 0, y:this.winSize.height}});
+        MW.SEGMENTS.push({a: {x: 0, y: 0}, b:{x: this.winSize.width, y:0}});
+        MW.SEGMENTS.push({a: {x: this.winSize.width, y: this.winSize.height}, b:{x: 0, y:this.winSize.height}});
+        MW.SEGMENTS.push({a: {x: this.winSize.width, y: this.winSize.height}, b:{x: this.winSize.width, y:0}});
+
     },
     drawPolygons: function() {
         var winSize = this.winSize;
         var draw = cc.DrawNode.create();
         this.addChild( draw, 1 );
 
-        draw.drawRect(
+        /*draw.drawRect(
             cc.p(2, 2),
             cc.p(winSize.width-2, winSize.height-2),
             cc.color(0, 0, 0, 255),
             1,
             cc.color(120, 120, 120, 255)
-        );
+        );*/
 
-        for (var i = 0; i < this.segments.length; ++i) {
-            var segment = this.segments[i];
+        for (var i = 0; i < MW.SEGMENTS.length; ++i) {
+            var segment = MW.SEGMENTS[i];
             //cc.log(segment.a.x + ", " + segment.a.y);
-
+            draw.drawDot(cc.p(segment.a.x, segment.a.y), 5, cc.color(0, 255, 0, 255));
             draw.drawSegment(
                 cc.p(segment.a.x, segment.a.y),
                 cc.p(segment.b.x, segment.b.y),

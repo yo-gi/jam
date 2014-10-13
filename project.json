@@ -20,7 +20,7 @@
         "src/globals.js",
         "src/EventHandler.js",
         "src/ShadowLayer.js",
+        "src/map01.js",
         "src/Enemy_01.js"
-
     ]
 }
