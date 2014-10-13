@@ -10,6 +10,8 @@ MW.PLAYER = {};
 MW.PLAYER.x = 0;
 MW.PLAYER.y = 0;
 
+MW.SEGMENTS = [];
+
 var GameLayer = cc.Layer.extend({
 
     ctor:function(){
