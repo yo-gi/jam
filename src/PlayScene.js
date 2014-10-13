@@ -4,6 +4,7 @@ var PlayScene = cc.Scene.extend({
         //add three layer in the right order
         this.addChild(new GameLayer());
         this.addChild(new BackgroundLayer());
+        this.addChild(new ShadowLayer());
         this.addChild(new Player());
     }
 });

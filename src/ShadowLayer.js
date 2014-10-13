@@ -41,7 +41,7 @@ function getIntersection(ray, segment) {
     };
 }
 
-var BackgroundLayer = cc.Layer.extend({
+var ShadowLayer = cc.Layer.extend({
     segments: null,
     points:null,
     uniquePoints:null,
@@ -80,19 +80,11 @@ var BackgroundLayer = cc.Layer.extend({
             });
         })(this.points);
 
-        // Load
-
-        /*
-         var spriteBG = new cc.Sprite(res.background_1_png);
-         spriteBG.setPosition(centerPos);
-         this.addChild(spriteBG);
-         */
-        this.drawPolygons();
-        this.drawLines(320, 200);
         this.schedule(this.update);
     },
     update: function(dt) {
-        //this.drawLines(Math.floor(Math.random() * 400) + 1, Math.floor(Math.random() * 400) + 1);
+        cc.log(MW.MOUSE.x + ", " + MW.MOUSE.y);
+        this.drawLines(MW.MOUSE.x, MW.MOUSE.y);
     },
     loadSegments: function() {
         this.segments = [

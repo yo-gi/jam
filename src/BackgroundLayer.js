@@ -82,7 +82,6 @@ var BackgroundLayer = cc.Layer.extend({
         })(this.points);
 
         this.drawPolygons();
-        this.drawLines(320, 200);
         this.schedule(this.update);
     },
     update: function(dt) {
