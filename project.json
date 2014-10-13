@@ -18,6 +18,7 @@
         "src/PlayScene.js",
         "src/StatusLayer.js",
         "src/globals.js",
-        "src/EventHandler.js"
+        "src/EventHandler.js",
+        "src/ShadowLayer.js"
     ]
 }
