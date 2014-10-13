@@ -1,7 +1,6 @@
 var Player = cc.Sprite.extend({
     mainPlayer:null,
     ctor:function () {
-        var winsize = cc.director.getWinSize();
         this._super();
         this.init();
         this.x = 400;
@@ -40,21 +39,21 @@ var Player = cc.Sprite.extend({
         this.y += this.velY;
         this.velX *= this.friction;
         this.x += this.velX;
-        if(this.x >= 1250)
+        if(this.x >= MW.MAP.xextreme - 1)
         {
-            this.x = 1250;
+            this.x = MW.MAP.xextreme - 1;
         }
-        else if(this.x <= 30)
+        else if(this.x <= 1)
         {
-            this.x = 30;
+            this.x = 1;
         }
-        if(this.y >= 710)
+        if(this.y >= MW.MAP.yextreme - 1)
         {
-            this.y = 710;
+            this.y = MW.MAP.yextreme - 1;
         }
-        else if(this.y <= 10)
+        else if(this.y <= 1)
         {
-            this.y = 10;
+            this.y = 1;
         }
         MW.PLAYER.x = this.x;
         MW.PLAYER.y = this.y;
@@ -73,15 +72,8 @@ var Player = cc.Sprite.extend({
         this.mainPlayer.setPosition(new cc.Point(this.x,this.y));
         this.schedule(this.update);
     },
-    is_colliding:function(p1, p2) {
-        var potentialx = this.x + this.velX*this.friction;
-        var potentialy = this.y + this.velY*this.friction;
-        var denominator = ((potentialx - this.x) * (p2.y - p1.y)) - ((potentialx - this.y) * (p2.x - p1.x));
-        var numerator1 = ((this.y - p1.y) * (p2.x - p1.x)) - ((this.x - p1.x) * (p2.y - p1.y));
-        var numerator2 = ((this.y - p1.y) * (potentialx - this.x)) - ((this.x - p1.y) * (potentialy - this.x));
-        if (denominator == 0) return numerator1 == 0 && numerator2 == 0;
-        var r = numerator1 / denominator;
-        var s = numerator2 / denominator;
-        return (r >= 0 && r <= 1) && (s >= 0 && s <= 1);
+    collideRect:function() {
+        var contentSize = this.mainSprite.getContentSize();
+        return cc.rect(this.x, this.y, contentSize.width, contentSize.height);
     }
 });

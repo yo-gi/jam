@@ -4,11 +4,21 @@ MW.MOUSE = {};
 MW.MOUSE.x = 0;
 MW.MOUSE.y = 0;
 
+MW.VIEWPORT = {};
+MW.VIEWPORT.x = 0;
+MW.VIEWPORT.y = 0;
+MW.VIEWPORT.speed = 2;
+
+MW.MAP = {};
+MW.MAP.xextreme = 2000;
+MW.MAP.yextreme = 1600;
+
 MW.PLAYER = {};
 MW.PLAYER.x = 0;
 MW.PLAYER.y = 0;
 
 MW.SEGMENTS = [];
+MW.RECTS = [];
 
 var GameLayer = cc.Layer.extend({
 
