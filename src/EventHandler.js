@@ -10,8 +10,8 @@ MW.VIEWPORT.y = 0;
 MW.VIEWPORT.speed = 2;
 
 MW.MAP = {};
-MW.MAP.xextreme = 1000;
-MW.MAP.yextreme = 800;
+MW.MAP.xextreme = 2000;
+MW.MAP.yextreme = 1600;
 
 MW.PLAYER = {};
 MW.PLAYER.x = 0;
