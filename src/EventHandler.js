@@ -6,6 +6,10 @@ MW.MOUSE.y = 0;
 GX = 0;
 GY = 0;
 
+MW.PLAYER = {};
+MW.PLAYER.x = 0;
+MW.PLAYER.y = 0;
+
 var GameLayer = cc.Layer.extend({
 
     ctor:function(){

@@ -45,7 +45,9 @@ var ShadowLayer = cc.Layer.extend({
     segments: null,
     points:null,
     uniquePoints:null,
+    drawer:null,
     winSize: null,
+    player: null,
     ctor:function () {
         this._super();
         this.init();
@@ -56,8 +58,7 @@ var ShadowLayer = cc.Layer.extend({
         // Load necessary constants
         this.winSize = cc.director.getWinSize();
         var winSize = this.winSize;
-        console.log("winSize: " + this.winSize.width + ", " + this.winSize.height);
-        var centerPos = cc.p(this.winSize.width / 2, this.winSize.height / 2);
+
         // Shadow code
         this.loadSegments();
         this.points = (function(segments){
@@ -79,12 +80,14 @@ var ShadowLayer = cc.Layer.extend({
                 }
             });
         })(this.points);
-
+        this.drawer = cc.DrawNode.create();
+        this.addChild(this.drawer, 1);
         this.schedule(this.update);
     },
     update: function(dt) {
-        cc.log(MW.MOUSE.x + ", " + MW.MOUSE.y);
-        this.drawLines(MW.MOUSE.x, MW.MOUSE.y);
+        //cc.log(MW.MOUSE.x + ", " + MW.MOUSE.y);
+
+        this.drawLines();
     },
     loadSegments: function() {
         this.segments = [
@@ -121,12 +124,9 @@ var ShadowLayer = cc.Layer.extend({
             {a:{x:480,y:150}, b:{x:400,y:95}}
         ]
     },
-    drawLines: function(x_, y_) {
-        var winSize = this.winSize;
-        var draw = cc.DrawNode.create();
-        this.addChild( draw, 1 );
-
-        player = {x: x_, y:y_};
+    drawLines: function() {
+        var player = {x: MW.PLAYER.x, y:MW.PLAYER.y};
+        this.drawer.clear();
 
         var uniqueAngles = [];
         for (var j=0; j < this.uniquePoints.length; j++){
@@ -166,46 +166,32 @@ var ShadowLayer = cc.Layer.extend({
         intersects = intersects.sort(function(a,b){
             return a.angle-b.angle;
         });
-        var ccIntersects = (function(intersects) {
+
+        var ccIntersects = (function(intersects, draw) {
             var ret_val = [];
-            for (var i = 0; i < intersects.length-1; ++i) {
+            var len = intersects.length;
+            for (var i = 0; i < len-1; ++i) {
                 draw.drawPoly([
                         cc.p(player.x, player.y),
                         cc.p(intersects[i].x|0, intersects[i].y|0),
                         cc.p(intersects[i+1].x|0, intersects[i+1].y|0)],
                     cc.color(123, 123, 250, 255),
                     1,
-                    cc.color(255, 255, 255, 255));
+                    cc.color(255, 255, 255, 0));
                 ret_val.push(cc.p(intersects[i].x|0, intersects[i].y|0));
             }
-            return ret_val;
-        })(intersects);
-        console.log(ccIntersects);
-
-    },
-    drawPolygons: function() {
-        var winSize = this.winSize;
-        var draw = cc.DrawNode.create();
-        this.addChild( draw, 1 );
-
-        draw.drawRect(
-            cc.p(2, 2),
-            cc.p(winSize.width-2, winSize.height-2),
-            cc.color(0, 0, 0, 255),
-            1,
-            cc.color(120, 120, 120, 255)
-        );
-
-        for (var i = 0; i < this.segments.length; ++i) {
-            var segment = this.segments[i];
-            //cc.log(segment.a.x + ", " + segment.a.y);
-
-            draw.drawSegment(
-                cc.p(segment.a.x, segment.a.y),
-                cc.p(segment.b.x, segment.b.y),
+            draw.drawPoly([
+                    cc.p(player.x, player.y),
+                    cc.p(intersects[len-1].x|0, intersects[len-1].y|0),
+                    cc.p(intersects[0].x|0, intersects[0].y|0)],
+                cc.color(123, 123, 250, 255),
                 1,
-                cc.color(255, 255, 255, 255)
-            );
-        }
+                cc.color(255, 255, 255, 0));
+            ret_val.push(cc.p(intersects[i].x|0, intersects[i].y|0));
+
+            return ret_val;
+        }) (intersects, this.drawer);
+        //console.log(ccIntersects);
+
     }
 });
