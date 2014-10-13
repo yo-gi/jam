@@ -40,21 +40,21 @@ var Player = cc.Sprite.extend({
         this.y += this.velY;
         this.velX *= this.friction;
         this.x += this.velX;
-        if(this.x >= 1250)
+        if(this.x >= MW.MAP.xextreme - 1)
         {
-            this.x = 1250;
+            this.x = MW.MAP.xextreme - 1;
         }
-        else if(this.x <= 30)
+        else if(this.x <= 1)
         {
-            this.x = 30;
+            this.x = 1;
         }
-        if(this.y >= 710)
+        if(this.y >= MW.MAP.yextreme - 1)
         {
-            this.y = 710;
+            this.y = MW.MAP.yextreme - 1;
         }
-        else if(this.y <= 10)
+        else if(this.y <= 1)
         {
-            this.y = 10;
+            this.y = 1;
         }
         MW.PLAYER.x = this.x;
         MW.PLAYER.y = this.y;
@@ -80,5 +80,11 @@ var Player = cc.Sprite.extend({
         var r = numerator1 / denominator;
         var s = numerator2 / denominator;
         return (r >= 0 && r <= 1) && (s >= 0 && s <= 1);
+    },
+    getX:function () {
+        return this.mainPlayer.getPositionX();
+    },
+    getY:function () {
+        return this.mainPlayer.getPositionY();
     }
 });

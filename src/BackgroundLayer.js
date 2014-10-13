@@ -46,6 +46,10 @@ var BackgroundLayer = cc.Layer.extend({
     points:null,
     uniquePoints:null,
     winSize: null,
+    map00:null,
+    map01:null,
+    mapWidth:0,
+    mapIndex:0,
     ctor:function () {
         this._super();
         this.init();
@@ -88,10 +92,10 @@ var BackgroundLayer = cc.Layer.extend({
             MW.SEGMENTS.push(point);
         }
         //corner segments
-        MW.SEGMENTS.push({a: {x: 0, y: 0}, b:{x: 0, y:this.winSize.height}});
-        MW.SEGMENTS.push({a: {x: 0, y: 0}, b:{x: this.winSize.width, y:0}});
-        MW.SEGMENTS.push({a: {x: this.winSize.width, y: this.winSize.height}, b:{x: 0, y:this.winSize.height}});
-        MW.SEGMENTS.push({a: {x: this.winSize.width, y: this.winSize.height}, b:{x: this.winSize.width, y:0}});
+        MW.SEGMENTS.push({a: {x: 0, y: 0}, b:{x: 0, y:MW.MAP.yextreme}});
+        MW.SEGMENTS.push({a: {x: 0, y: 0}, b:{x: MW.MAP.xextreme, y:0}});
+        MW.SEGMENTS.push({a: {x: MW.MAP.xextreme, y: MW.MAP.yextreme}, b:{x: 0, y:MW.MAP.yextreme}});
+        MW.SEGMENTS.push({a: {x: MW.MAP.xextreme, y: MW.MAP.yextreme}, b:{x: MW.MAP.xextreme, y:0}});
 
     },
     drawPolygons: function() {
