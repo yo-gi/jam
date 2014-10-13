@@ -8,6 +8,7 @@ var PlayScene = cc.Scene.extend({
         //this.addChild(new ShadowLayer());
         this.addChild(new Enemy_01());
         this.addChild(new Enemy_02());
+        this.addChild(new Coin());
         this.addChild(new Player());
     }
 });

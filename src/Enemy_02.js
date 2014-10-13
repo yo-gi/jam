@@ -5,8 +5,8 @@ var Enemy_02 = cc.Sprite.extend({
         this._super();
         this.init();
         this.action = 0;
-        this.x = 200;
-        this.y = 200;
+        this.x = 70;
+        this.y = 100;
         this.x_prev = 0;
         this.y_prev = 0;
         this.gameTicks = 0;
@@ -20,21 +20,20 @@ var Enemy_02 = cc.Sprite.extend({
         this.y_prev = this.y;
         if((this.gameTicks % 600) < 150)
         {
-            this.y = (this.gameTicks % 150) + 200;
+            this.y = this.y + 1.6;
         }
         else if((this.gameTicks % 600) < 300)
         {
-            this.x = (this.gameTicks % 150) + 200;
+            this.x = this.x + 2.2;
         }
         else if((this.gameTicks % 600) < 450)
         {
-            this.y = 350 - (this.gameTicks % 150);
+            this.y = this.y - 1.6;
         }
         else
         {
-            this.x = 350 - (this.gameTicks % 150);
+            this.x = this.x - 2.2;
         }
-        //cc.log(this.y + " " + this.x);
         this.gameTicks++;
         if(this.x >= 1250)
         {
