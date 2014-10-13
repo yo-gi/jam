@@ -85,8 +85,6 @@ var ShadowLayer = cc.Layer.extend({
         this.schedule(this.update);
     },
     update: function(dt) {
-        //cc.log(MW.MOUSE.x + ", " + MW.MOUSE.y);
-
         this.drawLines();
     },
     loadSegments: function() {
@@ -159,7 +157,6 @@ var ShadowLayer = cc.Layer.extend({
 
             return ret_val;
         }) (intersects, this.drawer);
-        //console.log(ccIntersects);
 
     }
 });

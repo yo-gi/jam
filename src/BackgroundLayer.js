@@ -46,14 +46,18 @@ var BackgroundLayer = cc.Layer.extend({
     points:null,
     uniquePoints:null,
     winSize: null,
-    ctor:function () {
+    space:null,
+    ctor:function (space) {
         this._super();
+        this.space = space;
         this.init();
+        console.log("space:\n");
+        console.log(this.space);
     },
 
     init:function () {
         this._super();
-
+        console.log("background layer init");
         // Load necessary constants
         this.winSize = cc.director.getWinSize();
 
@@ -69,8 +73,6 @@ var BackgroundLayer = cc.Layer.extend({
         for (var j = 0; j < map01.length; ++j) {
             var base = map01[j][0];
             var points = map01[j][1];
-            cc.log(map01);
-            cc.log(points);
             for (var i = 0; i < points.length - 1; ++i) {
                 var x1, x2, y1, y2;
                 x1 = base.x + points[i].x;
@@ -92,7 +94,15 @@ var BackgroundLayer = cc.Layer.extend({
         MW.SEGMENTS.push({a: {x: 0, y: 0}, b:{x: this.winSize.width, y:0}});
         MW.SEGMENTS.push({a: {x: this.winSize.width, y: this.winSize.height}, b:{x: 0, y:this.winSize.height}});
         MW.SEGMENTS.push({a: {x: this.winSize.width, y: this.winSize.height}, b:{x: this.winSize.width, y:0}});
+        for (var i = 0; i < MW.SEGMENTS.length; ++i) {
+            var wall = new cp.SegmentShape(this.space.staticBody,
+                cp.v(MW.SEGMENTS[i].a.x, MW.SEGMENTS[i].a.y),// start point
+                cp.v(MW.SEGMENTS[i].b.x, MW.SEGMENTS[i].b.y),// MAX INT:4294967295
+                5); // thickness of wall
+            wall.setCollisionType(2);
+            this.space.addStaticShape(wall);
 
+        }
     },
     drawPolygons: function() {
         var winSize = this.winSize;
@@ -109,7 +119,6 @@ var BackgroundLayer = cc.Layer.extend({
 
         for (var i = 0; i < MW.SEGMENTS.length; ++i) {
             var segment = MW.SEGMENTS[i];
-            //cc.log(segment.a.x + ", " + segment.a.y);
             draw.drawDot(cc.p(segment.a.x, segment.a.y), 5, cc.color(0, 255, 0, 255));
             draw.drawSegment(
                 cc.p(segment.a.x, segment.a.y),

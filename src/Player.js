@@ -1,19 +1,24 @@
-var Player = cc.Sprite.extend({
-    mainPlayer:null,
-    ctor:function () {
+var Player = cc.Layer.extend({
+    mainSprite:null,
+    space:null,
+    sprite:null,
+    ctor:function (space) {
         var winsize = cc.director.getWinSize();
+
         this._super();
+        this.space = space; //chipmunk
         this.init();
-        this.x = winsize.width / 2;
-        this.y = winsize.height / 2;
+        this._debugNode = new cc.PhysicsDebugNode(this.space);
+        this.addChild(this._debugNode, 10);
+
+        this.x_ = winsize.width / 2;
+        this.y_ = winsize.height / 2;
         this.velX = 0;
         this.velY = 0;
         this.speed = 4.5;
         this.friction = 0.85;
-        //W = 87
-        //A = 65
-        //S = 83
-        //D = 68
+        //W = 87, A = 65, S = 83, D = 68
+
     },
     update:function(dt){
         if (MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) {
@@ -37,52 +42,58 @@ var Player = cc.Sprite.extend({
             }
         }
         this.velY *= this.friction;
-        this.y += this.velY;
+        this.y_ += this.velY;
         this.velX *= this.friction;
-        this.x += this.velX;
+        this.x_ += this.velX;
 
-        if(this.x >= 1250)
+        /*if(this.x_ >= 1250)
         {
-            this.x = 1250;
+            this.x_ = 1250;
         }
-        else if(this.x <= 30)
+        else if(this.x_ <= 30)
         {
-            this.x = 30;
+            this.x_ = 30;
         }
 
-        if(this.y >= 710)
+        if(this.y_ >= 710)
         {
-            this.y = 710;
+            this.y_ = 710;
         }
-        else if(this.y <= 10)
+        else if(this.y_ <= 10)
         {
-            this.y = 10;
-        }
-        MW.PLAYER.x = this.x;
-        MW.PLAYER.y = this.y;
+            this.y_ = 10;
+        }*/
+        MW.PLAYER.x = this.x_;
+        MW.PLAYER.y = this.y_;
+        this.body.p = cc.p(this.x_, this.y_);
 
-        var angle = Math.atan2(MW.MOUSE.x-this.x,MW.MOUSE.y-this.y);
+        var angle = Math.atan2(MW.MOUSE.x-this.x_,MW.MOUSE.y-this.y_);
         angle = angle * (180/Math.PI);
-        this.setRotation(angle);
+        this.mainSprite.setRotation(angle);
     },
     init:function () {
         this._super();
 
+        this.mainSprite = new cc.PhysicsSprite(res.Player_png);
+        var contentSize = this.mainSprite.getContentSize();
+        this.body = new cp.Body(1, cp.momentForBox(1, contentSize.width, contentSize.height));
+        this.body.p = cc.p(this.x_, this.y_);
+        this.body.applyImpulse(cp.v(0, 0), cp.v(0, 0));
+        this.space.addBody(this.body);
+        this.shape = new cp.BoxShape(this.body, contentSize.width, contentSize.height);
+        this.shape.setCollisionType(2);
+        this.space.addShape(this.shape);
+        this.mainSprite.setBody(this.body);
+
+        this.addChild(this.mainSprite);
+        this.schedule(this.update);
+
         //create the hero sprite
+        /*
         this.mainPlayer = new cc.Sprite(res.Player_png);
         this.addChild(this.mainPlayer);
-        this.mainPlayer.setPosition(new cc.Point(this.x,this.y));
+        this.mainPlayer.setPosition(new cc.Point(this.x_,this.y_));
         this.schedule(this.update);
-    },
-    is_colliding:function(p1, p2) {
-        var potentialx = this.x + this.velX*this.friction;
-        var potentialy = this.y + this.velY*this.friction;
-        var denominator = ((potentialx - this.x) * (p2.y - p1.y)) - ((potentialx - this.y) * (p2.x - p1.x));
-        var numerator1 = ((this.y - p1.y) * (p2.x - p1.x)) - ((this.x - p1.x) * (p2.y - p1.y));
-        var numerator2 = ((this.y - p1.y) * (potentialx - this.x)) - ((this.x - p1.y) * (potentialy - this.x));
-        if (denominator == 0) return numerator1 == 0 && numerator2 == 0;
-        var r = numerator1 / denominator;
-        var s = numerator2 / denominator;
-        return (r >= 0 && r <= 1) && (s >= 0 && s <= 1);
+        */
     }
 });
