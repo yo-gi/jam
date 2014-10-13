@@ -5,10 +5,8 @@ var Enemy_01 = cc.Sprite.extend({
         this._super();
         this.init();
         this.action = 0;
-        this.x = 300;
-        this.y = 0;
-        this.x_prev = 0;
-        this.y_prev = 0;
+        this.x = 350;
+        this.y = 600;
         this.gameTicks = 0;
         //W = 87
         //A = 65
@@ -16,9 +14,7 @@ var Enemy_01 = cc.Sprite.extend({
         //D = 68
     },
     update:function(dt){
-        this.x_prev = this.x;
-        this.y_prev = this.y;
-        this.y = (250 * Math.sin((this.gameTicks * 0.5 * Math.PI)/80)) + 200;
+        this.x = (240 * Math.sin((this.gameTicks * 0.5 * Math.PI)/80)) + 350;
         this.gameTicks++;
         if(this.x >= 1250)
         {

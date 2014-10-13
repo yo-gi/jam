@@ -1,19 +1,18 @@
-var Player = cc.Layer.extend({
-    mainSprite:null,
-    ctor:function (space) {
-        var winsize = cc.director.getWinSize();
-
+var Player = cc.Sprite.extend({
+    mainPlayer:null,
+    ctor:function () {
         this._super();
         this.init();
-
-        this.x_ = winsize.width / 2;
-        this.y_ = winsize.height / 2;
+        this.x = 400;
+        this.y = 300;
         this.velX = 0;
         this.velY = 0;
         this.speed = 4.5;
         this.friction = 0.85;
-        //W = 87, A = 65, S = 83, D = 68
-
+        //W = 87
+        //A = 65
+        //S = 83
+        //D = 68
     },
     update:function(dt){
         if (MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) {
@@ -37,28 +36,41 @@ var Player = cc.Layer.extend({
             }
         }
         this.velY *= this.friction;
-        this.y_ += this.velY;
+        this.y += this.velY;
         this.velX *= this.friction;
-        this.x_ += this.velX;
-
-        MW.PLAYER.x = this.x_;
-        MW.PLAYER.y = this.y_;
-
-        var angle = Math.atan2(MW.MOUSE.x-this.x_,MW.MOUSE.y-this.y_);
+        this.x += this.velX;
+        if(this.x >= MW.MAP.xextreme - 1)
+        {
+            this.x = MW.MAP.xextreme - 1;
+        }
+        else if(this.x <= 1)
+        {
+            this.x = 1;
+        }
+        if(this.y >= MW.MAP.yextreme - 1)
+        {
+            this.y = MW.MAP.yextreme - 1;
+        }
+        else if(this.y <= 1)
+        {
+            this.y = 1;
+        }
+        MW.PLAYER.x = this.x;
+        MW.PLAYER.y = this.y;
+        var angle = Math.atan2(MW.MOUSE.x-this.x,MW.MOUSE.y-this.y);
         angle = angle * (180/Math.PI);
-        this.mainSprite.setRotation(angle);
-        this.mainSprite.setPosition(cc.p(this.x_, this.y_));
+        this.setRotation(angle);
     },
-    init:function() {
+    init:function () {
         this._super();
-
-        this.mainSprite = new cc.Sprite(res.Player_png);
-
-        this.addChild(this.mainSprite);
+        //create the hero sprite
+        this.mainPlayer = new cc.Sprite(res.Player_png);
+        this.addChild(this.mainPlayer);
+        this.mainPlayer.setPosition(new cc.Point(this.x,this.y));
         this.schedule(this.update);
     },
     collideRect:function() {
         var contentSize = this.mainSprite.getContentSize();
-        return cc.rect(this.x_, this.y_, contentSize.width, contentSize.height);
+        return cc.rect(this.x, this.y, contentSize.width, contentSize.height);
     }
 });
