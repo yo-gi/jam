@@ -1,10 +1,9 @@
 var Player = cc.Sprite.extend({
-    spriteRunner:null,
+    mainPlayer:null,
     ctor:function () {
         var winsize = cc.director.getWinSize();
         this._super();
         this.init();
-        //
         this.x = winsize.width / 2;
         this.y = winsize.height / 2;
         this.velX = 0;
@@ -67,9 +66,9 @@ var Player = cc.Sprite.extend({
         this._super();
 
         //create the hero sprite
-        this.spriteRunner = new cc.Sprite(res.Player_png);
-        this.addChild(this.spriteRunner);
-        this.spriteRunner.setPosition(new cc.Point(this.x,this.y));
+        this.mainPlayer = new cc.Sprite(res.Player_png);
+        this.addChild(this.mainPlayer);
+        this.mainPlayer.setPosition(new cc.Point(this.x,this.y));
         this.schedule(this.update);
     },
     is_colliding:function(p1, p2) {

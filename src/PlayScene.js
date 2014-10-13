@@ -6,6 +6,7 @@ var PlayScene = cc.Scene.extend({
         this.addChild(new BackgroundLayer());
         //Disable ShadowLayer to make the lines go away
         //this.addChild(new ShadowLayer());
+        this.addChild(new Enemy_01());
         this.addChild(new Player());
     }
 });

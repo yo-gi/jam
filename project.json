@@ -19,6 +19,8 @@
         "src/StatusLayer.js",
         "src/globals.js",
         "src/EventHandler.js",
-        "src/ShadowLayer.js"
+        "src/ShadowLayer.js",
+        "src/Enemy_01.js"
+
     ]
 }
