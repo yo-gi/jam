@@ -4,16 +4,16 @@ var Player = cc.Sprite.extend({
         var winsize = cc.director.getWinSize();
         this._super();
         this.init();
-        this.x = winsize.width / 2;
-        this.y = winsize.height / 2;
+        this.x = 400;
+        this.y = 300;
         this.velX = 0;
         this.velY = 0;
         this.speed = 4.5;
         this.friction = 0.85;
-//W = 87
-//A = 65
-//S = 83
-//D = 68
+        //W = 87
+        //A = 65
+        //S = 83
+        //D = 68
     },
     update:function(dt){
         if (MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) {
@@ -64,7 +64,7 @@ var Player = cc.Sprite.extend({
     },
     init:function () {
         this._super();
-//create the hero sprite
+        //create the hero sprite
         this.mainPlayer = new cc.Sprite(res.Player_png);
         this.addChild(this.mainPlayer);
         this.mainPlayer.setPosition(new cc.Point(this.x,this.y));
