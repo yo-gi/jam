@@ -53,12 +53,11 @@ var BackgroundLayer = cc.Layer.extend({
 
     init:function () {
         this._super();
-
         // Load necessary constants
         this.winSize = cc.director.getWinSize();
         var winSize = this.winSize;
         console.log("winSize: " + this.winSize.width + ", " + this.winSize.height);
-
+        var centerPos = cc.p(this.winSize.width / 2, this.winSize.height / 2);
         // Shadow code
         this.loadSegments();
         this.points = (function(segments){
@@ -81,6 +80,13 @@ var BackgroundLayer = cc.Layer.extend({
             });
         })(this.points);
 
+        // Load
+
+        /*
+         var spriteBG = new cc.Sprite(res.background_1_png);
+         spriteBG.setPosition(centerPos);
+         this.addChild(spriteBG);
+         */
         this.drawPolygons();
         this.drawLines(320, 200);
         this.schedule(this.update);
@@ -172,9 +178,9 @@ var BackgroundLayer = cc.Layer.extend({
             var ret_val = [];
             for (var i = 0; i < intersects.length-1; ++i) {
                 draw.drawPoly([
-                    cc.p(player.x, player.y),
-                    cc.p(intersects[i].x|0, intersects[i].y|0),
-                    cc.p(intersects[i+1].x|0, intersects[i+1].y|0)],
+                        cc.p(player.x, player.y),
+                        cc.p(intersects[i].x|0, intersects[i].y|0),
+                        cc.p(intersects[i+1].x|0, intersects[i+1].y|0)],
                     cc.color(123, 123, 250, 255),
                     1,
                     cc.color(255, 255, 255, 255));

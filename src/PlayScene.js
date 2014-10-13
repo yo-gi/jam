@@ -5,6 +5,5 @@ var PlayScene = cc.Scene.extend({
         this.addChild(new GameLayer());
         this.addChild(new BackgroundLayer());
         this.addChild(new Player());
-        this.addChild(new StatusLayer());
     }
 });
