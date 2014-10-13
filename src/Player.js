@@ -59,6 +59,9 @@ var Player = cc.Sprite.extend({
         {
             this.y = 10;
         }
+        MW.PLAYER.x = this.x;
+        MW.PLAYER.y = this.y;
+
         var angle = Math.atan2(MW.MOUSE.x-this.x,MW.MOUSE.y-this.y);
         angle = angle * (180/Math.PI);
         this.setRotation(angle);

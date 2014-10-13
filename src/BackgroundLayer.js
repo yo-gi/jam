@@ -56,31 +56,8 @@ var BackgroundLayer = cc.Layer.extend({
 
         // Load necessary constants
         this.winSize = cc.director.getWinSize();
-        var winSize = this.winSize;
-        console.log("winSize: " + this.winSize.width + ", " + this.winSize.height);
 
-        // Shadow code
         this.loadSegments();
-        this.points = (function(segments){
-            var a = [];
-            segments.forEach(function(seg){
-                a.push(seg.a,seg.b);
-            });
-            return a;
-        })(this.segments);
-        this.uniquePoints = (function(points){
-            var set = {};
-            return points.filter(function(p){
-                var key = p.x + "," + p.y;
-                if(key in set){
-                    return false;
-                }else{
-                    set[key]=true;
-                    return true;
-                }
-            });
-        })(this.points);
-
         this.drawPolygons();
         this.schedule(this.update);
     },
@@ -121,68 +98,6 @@ var BackgroundLayer = cc.Layer.extend({
             {a:{x:580,y:50}, b:{x:480,y:150}},
             {a:{x:480,y:150}, b:{x:400,y:95}}
         ]
-    },
-    drawLines: function(x_, y_) {
-        var winSize = this.winSize;
-        var draw = cc.DrawNode.create();
-        this.addChild( draw, 1 );
-
-        player = {x: x_, y:y_};
-
-        var uniqueAngles = [];
-        for (var j=0; j < this.uniquePoints.length; j++){
-            var uniquePoint = this.uniquePoints[j];
-            var angle = Math.atan2(uniquePoint.y-player.y,uniquePoint.x-player.x);
-            uniquePoint.angle = angle;
-            uniqueAngles.push(angle-0.00001,angle,angle+0.00001);
-        }
-
-        // RAYS IN ALL DIRECTIONS
-        var intersects = [];
-        for(var j=0;j<uniqueAngles.length;j++){
-            var angle = uniqueAngles[j];
-            // Calculate dx & dy from angle
-            var dx = Math.cos(angle);
-            var dy = Math.sin(angle);
-            // Ray from center of screen to player
-            var ray = {
-                a:{x:player.x,y:player.y},
-                b:{x:player.x+dx,y:player.y+dy}
-            };
-            // Find CLOSEST intersection
-            var closestIntersect = null;
-            for(var i=0;i<this.segments.length;i++){
-                var intersect = getIntersection(ray,this.segments[i]);
-                if(!intersect) continue;
-                if(!closestIntersect || intersect.param<closestIntersect.param){
-                    closestIntersect=intersect;
-                }
-            }
-            // Intersect angle
-            if(!closestIntersect) continue;
-            closestIntersect.angle = angle;
-            // Add to list of intersects
-            intersects.push(closestIntersect);
-        }
-        intersects = intersects.sort(function(a,b){
-            return a.angle-b.angle;
-        });
-        var ccIntersects = (function(intersects) {
-            var ret_val = [];
-            for (var i = 0; i < intersects.length-1; ++i) {
-                draw.drawPoly([
-                    cc.p(player.x, player.y),
-                    cc.p(intersects[i].x|0, intersects[i].y|0),
-                    cc.p(intersects[i+1].x|0, intersects[i+1].y|0)],
-                    cc.color(123, 123, 250, 255),
-                    1,
-                    cc.color(255, 255, 255, 255));
-                ret_val.push(cc.p(intersects[i].x|0, intersects[i].y|0));
-            }
-            return ret_val;
-        })(intersects);
-        console.log(ccIntersects);
-
     },
     drawPolygons: function() {
         var winSize = this.winSize;
