@@ -7,13 +7,17 @@ var Player = cc.Sprite.extend({
         this.init();
         this.x = winsize.width / 2;
         this.y = winsize.height / 2;
+        this.velY = 0;
+        this.velX = 0;
+        this.speed = 0;
+        this.friction = 0.98;
         //W = 87
         //A = 65
         //S = 83
         //D = 68
     },
     update:function(dt){
-        if ((MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) && this.y <= 600) {
+        if ((MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) && this.y <= 720) {
             this.y += 10;
         }
         if ((MW.KEYS[cc.KEY.s] || MW.KEYS[cc.KEY.down]) && this.y >= 0) {
@@ -22,7 +26,7 @@ var Player = cc.Sprite.extend({
         if ((MW.KEYS[cc.KEY.a] || MW.KEYS[cc.KEY.left]) && this.x >= 0) {
             this.x -= 10;
         }
-        if ((MW.KEYS[cc.KEY.d] || MW.KEYS[cc.KEY.right]) && this.x <= 800) {
+        if ((MW.KEYS[cc.KEY.d] || MW.KEYS[cc.KEY.right]) && this.x <= 1280) {
             this.x += 10;
         }
 
