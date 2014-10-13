@@ -1,5 +1,4 @@
 var Player = cc.Sprite.extend({
-    currentRotation:0,
     spriteRunner:null,
     ctor:function () {
         var winsize = cc.director.getWinSize();
@@ -62,8 +61,7 @@ var Player = cc.Sprite.extend({
         }
         var angle = Math.atan2(MW.MOUSE.x-this.x,MW.MOUSE.y-this.y);
         angle = angle * (180/Math.PI);
-        this.currentRotation = angle;
-        this.setRotation(this.currentRotation);
+        this.setRotation(angle);
     },
     init:function () {
         this._super();
@@ -73,5 +71,16 @@ var Player = cc.Sprite.extend({
         this.addChild(this.spriteRunner);
         this.spriteRunner.setPosition(new cc.Point(this.x,this.y));
         this.schedule(this.update);
+    },
+    is_colliding:function(p1, p2) {
+        var potentialx = this.x + this.velX*this.friction;
+        var potentialy = this.y + this.velY*this.friction;
+        var denominator = ((potentialx - this.x) * (p2.y - p1.y)) - ((potentialx - this.y) * (p2.x - p1.x));
+        var numerator1 = ((this.y - p1.y) * (p2.x - p1.x)) - ((this.x - p1.x) * (p2.y - p1.y));
+        var numerator2 = ((this.y - p1.y) * (potentialx - this.x)) - ((this.x - p1.y) * (potentialy - this.x));
+        if (denominator == 0) return numerator1 == 0 && numerator2 == 0;
+        var r = numerator1 / denominator;
+        var s = numerator2 / denominator;
+        return (r >= 0 && r <= 1) && (s >= 0 && s <= 1);
     }
 });
