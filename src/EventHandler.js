@@ -3,14 +3,13 @@ MW.KEYS = [];
 MW.MOUSE = {};
 MW.MOUSE.x = 0;
 MW.MOUSE.y = 0;
-GX = 0;
-GY = 0;
 
 MW.PLAYER = {};
 MW.PLAYER.x = 0;
 MW.PLAYER.y = 0;
 
 MW.SEGMENTS = [];
+MW.RECTS = [];
 
 var GameLayer = cc.Layer.extend({
 

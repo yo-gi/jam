@@ -6,7 +6,8 @@ var res = {
     start_n_png : "res/start_n.png",
     start_s_png : "res/start_s.png",
     background_1_png : "res/testmap_01.png",
-    Enemy_01_png : "res/enemy_01.png"
+    Enemy_01_png : "res/enemy_01.png",
+    Enemy_02_png : "res/enemy_02.png"
 };
 
 var g_resources = [];

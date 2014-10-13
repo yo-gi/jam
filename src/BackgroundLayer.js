@@ -46,18 +46,13 @@ var BackgroundLayer = cc.Layer.extend({
     points:null,
     uniquePoints:null,
     winSize: null,
-    space:null,
-    ctor:function (space) {
+    ctor:function () {
         this._super();
-        this.space = space;
         this.init();
-        console.log("space:\n");
-        console.log(this.space);
     },
 
     init:function () {
         this._super();
-        console.log("background layer init");
         // Load necessary constants
         this.winSize = cc.director.getWinSize();
 
@@ -94,15 +89,6 @@ var BackgroundLayer = cc.Layer.extend({
         MW.SEGMENTS.push({a: {x: 0, y: 0}, b:{x: this.winSize.width, y:0}});
         MW.SEGMENTS.push({a: {x: this.winSize.width, y: this.winSize.height}, b:{x: 0, y:this.winSize.height}});
         MW.SEGMENTS.push({a: {x: this.winSize.width, y: this.winSize.height}, b:{x: this.winSize.width, y:0}});
-        for (var i = 0; i < MW.SEGMENTS.length; ++i) {
-            var wall = new cp.SegmentShape(this.space.staticBody,
-                cp.v(MW.SEGMENTS[i].a.x, MW.SEGMENTS[i].a.y),// start point
-                cp.v(MW.SEGMENTS[i].b.x, MW.SEGMENTS[i].b.y),// MAX INT:4294967295
-                5); // thickness of wall
-            wall.setCollisionType(2);
-            this.space.addStaticShape(wall);
-
-        }
     },
     drawPolygons: function() {
         var winSize = this.winSize;
