@@ -9,12 +9,15 @@ var Player = cc.Sprite.extend({
         this.velY = 0;
         this.speed = 4.5;
         this.friction = 0.85;
+        this.gameTicks = 0;
+        this.closest = 0;
         //W = 87
         //A = 65
         //S = 83
         //D = 68
     },
     update:function(dt){
+        this.gameTicks++;
         if (MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) {
             if (this.velY < this.speed) {
                 this.velY++;
@@ -55,15 +58,50 @@ var Player = cc.Sprite.extend({
         {
             this.y = 1;
         }*/
+        if(MW.ENEMYd[1] < MW.ENEMYd[2])
+        {
+            this.closest = MW.ENEMYd[1];
+        }
+        else
+        {
+            this.closest = MW.ENEMYd[2];
+        }
+/*        cc.log(this.closest);
+        for(var i = 1; i <= 2; ++i)
+        {
+            if((this.closest == 0) || (MW.ENEMYd[i] < this.closest))
+            {
+                this.closest = MW.ENEMYd[i];
+            }
+        }*/
+        var winsize = cc.director.getWinSize();
         MW.PLAYER.x = this.x;
         MW.PLAYER.y = this.y;
-        var angle = Math.atan2(MW.MOUSE.x-this.x,MW.MOUSE.y-this.y);
+        var angle = Math.atan2(MW.MOUSE.x-(winsize.width/2), MW.MOUSE.y-(winsize.height/2));
+        //cc.log(MW.VIEWPORT.x + " " + MW.VIEWPORT.y);
         angle = angle * (180/Math.PI);
+        //cc.log("velX = " + this.velX + " velY = " + this.velY + " X " + this.x + " Y " + this.y);
         this.setRotation(angle);
+        if(this.closest > 150)
+        {
+            if((this.gameTicks % 100) == 0)
+            {
+                cc.audioEngine.playEffect(res.heartbeat_mp3);
+            }
+        }
+        else
+        {
+            if((this.gameTicks % 40) == 0)
+            {
+                cc.audioEngine.playEffect(res.heartbeat_mp3);
+            }
+        }
     },
     init:function () {
         this._super();
         //create the hero sprite
+        this.velX = 0;
+        this.velY = 0;
         this.mainPlayer = new cc.Sprite(res.Player_png);
         this.addChild(this.mainPlayer);
         this.mainPlayer.setPosition(new cc.Point(this.x,this.y));

@@ -17,6 +17,8 @@ MW.PLAYER = {};
 MW.PLAYER.x = 0;
 MW.PLAYER.y = 0;
 
+MW.ENEMYd = [];
+
 MW.SEGMENTS = [];
 MW.RECTS = [];
 
@@ -28,7 +30,7 @@ var GameLayer = cc.Layer.extend({
     },
     init:function () {
         // accept touch now!
-
+        MW.KEYS = [];
         cc.eventManager.addListener({
             event: cc.EventListener.KEYBOARD,
             onKeyPressed:function (key, event) {
