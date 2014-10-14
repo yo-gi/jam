@@ -27,8 +27,8 @@ var PlayScene = cc.Scene.extend({
         this.gameLayer.addChild(new Coin(350, 3150));
         this.gameLayer.addChild(new Coin(650, 3350));
         this.gameLayer.addChild(new Coin(750, 3350));
-        this.gameLayer.addChild(new Coin(50, 3350));
-        this.gameLayer.addChild(new Coin(1150, 50));
+        this.gameLayer.addChild(new Coin(150, 3350));
+        this.gameLayer.addChild(new Coin(1150, 150));
         this.gameLayer.addChild(new Coin(2050, 2850));
         this.gameLayer.addChild(new Coin(2250, 3450));
         this.gameLayer.addChild(new Coin(1650, 2850));
