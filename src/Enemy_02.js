@@ -7,8 +7,6 @@ var Enemy_02 = cc.Sprite.extend({
         this.action = 0;
         this.x = 70;
         this.y = 100;
-        this.x_prev = 0;
-        this.y_prev = 0;
         this.gameTicks = 0;
         this.distanceToPlayer = 0;
         this.GameOver = 0;
@@ -20,8 +18,6 @@ var Enemy_02 = cc.Sprite.extend({
     update:function(dt){
         if(this.GameOver == 0)
         {
-            this.x_prev = this.x;
-            this.y_prev = this.y;
             if((this.gameTicks % 600) < 150)
             {
                 this.y = this.y + 1.6;
@@ -57,7 +53,9 @@ var Enemy_02 = cc.Sprite.extend({
                 this.y = 10;
             }
             this.rotate();
+
             this.distanceToPlayer = Math.sqrt((MW.PLAYER.x-this.x) * (MW.PLAYER.x-this.x) + (MW.PLAYER.y-this.y) * (MW.PLAYER.y-this.y));
+            MW.ENEMY2.d = this.distanceToPlayer;
             if(this.distanceToPlayer < 40)
             {
                 var actionTo = new cc.MoveTo(2, cc.p(MW.PLAYER.x, MW.PLAYER.y));

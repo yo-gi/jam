@@ -9,12 +9,15 @@ var Player = cc.Sprite.extend({
         this.velY = 0;
         this.speed = 4.5;
         this.friction = 0.85;
+        this.gameTicks = 0;
+        this.closest = 0;
         //W = 87
         //A = 65
         //S = 83
         //D = 68
     },
     update:function(dt){
+        this.gameTicks++;
         if (MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) {
             if (this.velY < this.speed) {
                 this.velY++;
@@ -55,6 +58,14 @@ var Player = cc.Sprite.extend({
         {
             this.y = 1;
         }
+        if(MW.ENEMY1.d < MW.ENEMY2.d)
+        {
+            this.closest = MW.ENEMY1.d;
+        }
+        else
+        {
+            this.closest = MW.ENEMY2.d;
+        }
         var winsize = cc.director.getWinSize();
         MW.PLAYER.x = this.x;
         MW.PLAYER.y = this.y;
@@ -63,6 +74,20 @@ var Player = cc.Sprite.extend({
         angle = angle * (180/Math.PI);
         //cc.log("velX = " + this.velX + " velY = " + this.velY + " X " + this.x + " Y " + this.y);
         this.setRotation(angle);
+        if(this.closest > 150)
+        {
+            if((this.gameTicks % 100) == 0)
+            {
+                cc.audioEngine.playEffect(res.heartbeat_mp3);
+            }
+        }
+        else
+        {
+            if((this.gameTicks % 40) == 0)
+            {
+                cc.audioEngine.playEffect(res.heartbeat_mp3);
+            }
+        }
     },
     init:function () {
         this._super();
