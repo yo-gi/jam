@@ -17,24 +17,26 @@ var BackgroundLayer = cc.Layer.extend({
         this.winSize = cc.director.getWinSize();
 
         this.loadSegments();
-        this.loadMap(map02);
+        this.loadMap(map03);
         //this.schedule(this.update);
     },
     update: function(dt) {
         //this.drawLines(Math.floor(Math.random() * 400) + 1, Math.floor(Math.random() * 400) + 1);
     },
     loadMap: function(newMap) {
-        var draw = cc.DrawNode.create();
-        this.addChild(draw, 10);
+        //var draw = cc.DrawNode.create();
+        //this.addChild(draw, 10);
         console.log(newMap);
         MW.MAP.data = [];
-        var data = newMap['layers'][1]['data'];
+        var data = newMap['layers'][0]['data'];
         var height = newMap['height'];
         var width = newMap['width'];
         var tileWidth = newMap['tilewidth'];
-        for (var i = 0; i < width; ++i) {
-            for (var j = 0; j < height; ++j) {
+        for (var i = 0; i < height; ++i) {
+            for (var j = 0; j < width; ++j) {
                 var key = data[i * width + j];
+                //console.log(i + ", " + j + ", " + key);
+
                 var sprite = new cc.Sprite(newMap.keyMap[key]);
                 var x = i * tileWidth, y = j * tileWidth;
                 sprite.setPosition(cc.p(x, y));
@@ -42,10 +44,14 @@ var BackgroundLayer = cc.Layer.extend({
                 sprite._setWidth(tileWidth);
                 sprite._setHeight(tileWidth);
                 sprite.collideKey = key;
+                //console.log(sprite);
                 this.addChild(sprite);
                 MW.MAP.data.push(sprite);
             }
         }
+        MW.MAP.xextreme = height*tileWidth;
+        MW.MAP.yextreme = width*tileWidth;
+        console.log("loaded map");
     },
     loadSegments: function() {
         //corner segments

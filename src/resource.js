@@ -24,7 +24,11 @@ var res = {
     tile_1: "res/rock.png",
     tile_2: "res/ctile.png",
     tile_3: "res/rwall.png",
-    tile_4: "res/lwall.png"
+    tile_4: "res/lwall.png",
+    tile_5: "res/center.png",
+    tile_6: "res/starttile.png",
+    tile_7: "res/upwall.png",
+    tile_8: "res/downwall.png"
 };
 
 var g_resources = [];
