@@ -12,6 +12,7 @@ MW.VIEWPORT.speed = 2;
 MW.MAP = {};
 MW.MAP.xextreme = 2000;
 MW.MAP.yextreme = 1600;
+MW.MAP.data = [];
 
 MW.PLAYER = {};
 MW.PLAYER.x = 0;

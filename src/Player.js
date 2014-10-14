@@ -3,14 +3,18 @@ var Player = cc.Sprite.extend({
     ctor:function () {
         this._super();
         this.init();
-        this.x = 400;
-        this.y = 300;
+        this.x = 200;
+        this.y = 100;
         this.velX = 0;
         this.velY = 0;
         this.speed = 4.5;
         this.friction = 0.85;
         this.gameTicks = 0;
         this.closest = 0;
+        this.tileWidth = map01['tilewidth'];
+        this.drawer = cc.DrawNode.create();
+        this.addChild(this.drawer, 10);
+
         //W = 87
         //A = 65
         //S = 83
@@ -42,6 +46,14 @@ var Player = cc.Sprite.extend({
         this.y += this.velY;
         this.velX *= this.friction;
         this.x += this.velX;
+        if (this.collisionDetected()) {
+            this.y -= (this.velY + 0);
+            this.x -= (this.velX + 0);
+            this.velY /= this.friction;
+            this.velX /= this.friction;
+            //console.log(this.x + ", " + this.y);
+        }
+
         /*if(this.x >= MW.MAP.xextreme - 1)
         {
             this.x = MW.MAP.xextreme - 1;
@@ -96,26 +108,16 @@ var Player = cc.Sprite.extend({
                 cc.audioEngine.playEffect(res.heartbeat_mp3);
             }
         }
-        if((this.gameTicks % 100) < 20)
-        {
-            this.mainPlayer = cc.Sprite.create(res.Diver1_png, cc.rect(0,0,50,100));
-        }
-        else if((this.gameTicks % 100) < 40)
-        {
-            this.mainPlayer = cc.Sprite.create(res.Diver2_png, cc.rect(0,0,50,100));
-        }
-        else if((this.gameTicks % 100) < 60)
-        {
-            this.mainPlayer = cc.Sprite.create(res.Diver3_png, cc.rect(0,0,50,100));
-        }
-        else if((this.gameTicks % 100) < 80)
-        {
-            this.mainPlayer = cc.Sprite.create(res.Diver4_png, cc.rect(0,0,50,100));
-        }
-        else
-        {
-            this.mainPlayer = cc.Sprite.create(res.Diver5_png, cc.rect(0,0,50,100));
-        }
+        this.drawer.clear();
+        //console.log(this.contentsize.width + ", " + this.contentsize.height);
+
+
+        this.drawer.drawRect(
+            cc.p(0, 0),
+            cc.p(this.contentsize.width, this.contentsize.height),
+            cc.color(0, 0, 0, 255),
+            5,
+            cc.color(255, 255, 255, 255));
     },
     init:function () {
         this._super();
@@ -142,10 +144,34 @@ var Player = cc.Sprite.extend({
         this.mainPlayer = new cc.Sprite(res.Diver1_png);
         this.addChild(this.mainPlayer);
         this.mainPlayer.setPosition(new cc.Point(this.x,this.y));
+        this.contentsize = this.mainPlayer.getContentSize();
         this.schedule(this.update);
     },
     collideRect:function() {
-        var contentSize = this.mainSprite.getContentSize();
-        return cc.rect(this.x, this.y, contentSize.width, contentSize.height);
+        return cc.rect(this.x, this.y, 1, 1);
+    },
+    collisionDetected:function() {
+        for (var i = 0; i < MW.MAP.data.length; ++i) {
+            //console.log(MW.MAP.data[i].collideKey);
+            if (MW.MAP.data[i].collideKey == 3) {
+                if (this.collide(this, MW.MAP.data[i])) {
+                    console.log("true " + MW.MAP.data[i].x + ", " + MW.MAP.data[i].y);
+                    //MW.MAP.data[i].setOpacity(125);
+                    return true;
+                    //return false;
+                }
+                else {
+                    //console.log("false");
+                }
+            }
+        }
+        return false;
+    },
+    collide:function(a, b) {
+        var aRect = this.collideRect();
+        var bRect = cc.rect(b.x, b.y, this.tileWidth, this.tilewidth);
+        console.log("b: " + bRect.x + ", " + bRect.y);
+
+        return cc.rectIntersectsRect(aRect, bRect);
     }
 });
