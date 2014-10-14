@@ -1,5 +1,7 @@
 var Enemy_02 = cc.Sprite.extend({
     Enemy2:null,
+    spriteSheet:null,
+    swimmingAction:null,
     ctor:function (ticksX, ticksY, startX, startY, endX, endY) {
         var winsize = cc.director.getWinSize();
         this._super();
@@ -109,6 +111,17 @@ var Enemy_02 = cc.Sprite.extend({
         this.Enemy2.runAction(this.swimmingAction);
         this.spriteSheet.addChild(this.Enemy2);
         this.Enemy2.setRotation(190 * 180 / Math.PI);
+/*
+        this.Enemy1 = new cc.Sprite("#.png");
+        this.Enemy1.attr({x:this.x, y:this.y});
+        this.Enemy1.runAction(this.swimmingAction);
+        this.spriteSheet.addChild(this.Enemy1);
+        this.Enemy1.setRotation(190 * 180 / Math.PI);*/
+
+        //create the hero sprite
+/*        this.Enemy2 = new cc.Sprite(res.Enemy_02_png);
+        this.addChild(this.Enemy2);
+        this.Enemy2.setPosition(new cc.Point(this.x,this.y));*/
         this.total4 = this.totalTicks/4;
 
         this.schedule(this.update);
