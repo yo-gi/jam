@@ -27,6 +27,7 @@
         "src/Enemy_01.js",
         "src/Enemy_02.js",
         "src/coin.js",
+        "src/Win.js",
         "src/GameOver.js"
     ]
 }
