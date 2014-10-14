@@ -67,6 +67,14 @@ var Enemy_02 = cc.Sprite.extend({
                 cc.director.runScene(new GameOver());
 
             }
+            if(this.distanceToPlayer > 255)
+            {
+                this.Enemy2.setOpacity(0);
+            }
+            else
+            {
+                this.Enemy2.setOpacity(255-this.distanceToPlayer);
+            }
         }
     },
     rotate:function(){

@@ -58,6 +58,8 @@ var ShadowLayer = cc.Layer.extend({
         // Load necessary constants
         this.winSize = cc.director.getWinSize();
         var winSize = this.winSize;
+        //this.black = new cc.Sprite(res.black_png);
+        //this.addChild(this.black);
 
         // Shadow code
         this.loadSegments();
@@ -93,6 +95,7 @@ var ShadowLayer = cc.Layer.extend({
     drawLines: function() {
         var player = {x: MW.PLAYER.x, y:MW.PLAYER.y};
         this.drawer.clear();
+        //this.drawer.drawRect(cc.p(0,0), cc.p(1280, 720), cc.color(0,0,0,255), 0, cc.color(0,0,0,0));
 
         var uniqueAngles = [];
         for (var j=0; j < this.uniquePoints.length; j++){
@@ -132,7 +135,6 @@ var ShadowLayer = cc.Layer.extend({
         intersects = intersects.sort(function(a,b){
             return a.angle-b.angle;
         });
-
         var ccIntersects = (function(intersects, draw) {
             var ret_val = [];
             var len = intersects.length;
@@ -141,7 +143,7 @@ var ShadowLayer = cc.Layer.extend({
                         cc.p(player.x, player.y),
                         cc.p(intersects[i].x|0, intersects[i].y|0),
                         cc.p(intersects[i+1].x|0, intersects[i+1].y|0)],
-                    cc.color(123, 123, 250, 255),
+                    cc.color(255, 255, 255, 30),
                     1,
                     cc.color(255, 255, 255, 0));
                 ret_val.push(cc.p(intersects[i].x|0, intersects[i].y|0));
@@ -150,7 +152,7 @@ var ShadowLayer = cc.Layer.extend({
                     cc.p(player.x, player.y),
                     cc.p(intersects[len-1].x|0, intersects[len-1].y|0),
                     cc.p(intersects[0].x|0, intersects[0].y|0)],
-                cc.color(123, 123, 250, 255),
+                cc.color(255, 255, 255, 30),
                 1,
                 cc.color(255, 255, 255, 0));
             ret_val.push(cc.p(intersects[i].x|0, intersects[i].y|0));
