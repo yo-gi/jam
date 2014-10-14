@@ -15,6 +15,9 @@ MW.MAP.yextreme = 1600;
 MW.MAP.data = [];
 MW.MAP.unwalkable = [4];
 
+MW.COIN = {};
+MW.COIN.TOTAL = 0;
+
 MW.PLAYER = {};
 MW.PLAYER.x = 0;
 MW.PLAYER.y = 0;
