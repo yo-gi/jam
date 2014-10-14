@@ -1,12 +1,19 @@
 var Enemy_01 = cc.Sprite.extend({
     Enemy1:null,
-    ctor:function () {
+    ctor:function (speed, startX, startY, endX, endY) {
         var winsize = cc.director.getWinSize();
         this._super();
         this.init();
         this.action = 0;
-        this.x = 350;
-        this.y = 600;
+        this.speed = speed;
+        this.x = startX;
+        this.y = startY;
+        this.ampX = (Math.abs(endX - this.x)/2);
+        this.ampY = (Math.abs(endY - this.y)/2);
+        var offsetX = Math.abs(endX + this.x)/2;
+        var offsetY = Math.abs(endY + this.y)/2;
+        this.A = offsetX;
+        this.B = offsetY;
         this.gameTicks = 0;
         this.distanceToPlayer = 0;
         this.GameOver = 0;
@@ -18,7 +25,9 @@ var Enemy_01 = cc.Sprite.extend({
     update:function(dt){
         if(this.GameOver == 0)
         {
-            this.x = (240 * Math.sin((this.gameTicks * 0.5 * Math.PI)/80)) + 350;
+            this.x = (this.ampX * Math.sin((this.gameTicks * 0.5 * Math.PI)/this.speed)) + this.A;
+            this.y = (this.ampY * Math.sin((this.gameTicks * 0.5 * Math.PI)/this.speed)) + this.B;
+            //
             this.gameTicks++;
             if(this.x >= 1250)
             {
@@ -52,11 +61,11 @@ var Enemy_01 = cc.Sprite.extend({
             }
             if(this.distanceToPlayer > 255)
             {
-                this.Enemy1.setOpacity(0);
+                //this.Enemy1.setOpacity(0);
             }
             else
             {
-                this.Enemy1.setOpacity(255-this.distanceToPlayer);
+                //this.Enemy1.setOpacity(255-this.distanceToPlayer);
             }
         }
     },

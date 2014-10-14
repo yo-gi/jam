@@ -45,8 +45,7 @@ var GameLayer = cc.Layer.extend({
             onMouseMove: function(event){
                 MW.MOUSE.x = event.getLocationX();
                 MW.MOUSE.y = event.getLocationY();
-                //var str = "MousePosition X: " + event.getLocationX() + "  Y:" + event.getLocationY();
-                //cc.log(str);
+                //cc.log("MousePosition X: " + event.getLocationX() + "  Y:" + event.getLocationY());
             }
         }, this);
     }
