@@ -3,7 +3,7 @@ var Player = cc.Sprite.extend({
     ctor:function () {
         this._super();
         this.init();
-        this.x = 800;
+        this.x = 2000;
         this.y = 300;
         this.velX = 0;
         this.velY = 0;

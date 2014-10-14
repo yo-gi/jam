@@ -32,6 +32,8 @@ var BackgroundLayer = cc.Layer.extend({
         var height = newMap['height'];
         var width = newMap['width'];
         var tileWidth = newMap['tilewidth'];
+        MW.MAP.xextreme = height*tileWidth;
+        MW.MAP.yextreme = width*tileWidth;
         for (var i = 0; i < height; ++i) {
             for (var j = 0; j < width; ++j) {
                 var key = data[i * width + j];
@@ -49,8 +51,7 @@ var BackgroundLayer = cc.Layer.extend({
                 MW.MAP.data.push(sprite);
             }
         }
-        MW.MAP.xextreme = height*tileWidth;
-        MW.MAP.yextreme = width*tileWidth;
+
         console.log("loaded map");
     },
     loadSegments: function() {

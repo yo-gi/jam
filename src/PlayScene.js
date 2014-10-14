@@ -20,7 +20,7 @@ var PlayScene = cc.Scene.extend({
         this.gameLayer.addChild(new Coin(1550, 1350));
         this.gameLayer.addChild(new Coin(1750, 1350));
         this.gameLayer.addChild(new Enemy());
-        //this.gameLayer.addChild(new ShadowLayer(), 0, TagOfLayer.Shadow);
+        this.gameLayer.addChild(new ShadowLayer(), 0, TagOfLayer.Shadow);
         this.gameLayer.addChild(new Player(), 0 , TagOfLayer.Player);
         this.gameLayer.addChild(new StatusLayer(300, 200));
         this.addChild(this.gameLayer);
