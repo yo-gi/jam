@@ -55,11 +55,13 @@ var Player = cc.Sprite.extend({
         {
             this.y = 1;
         }
+        var winsize = cc.director.getWinSize();
         MW.PLAYER.x = this.x;
         MW.PLAYER.y = this.y;
-        var angle = Math.atan2(MW.MOUSE.x-this.x,MW.MOUSE.y-this.y);
+        var angle = Math.atan2(MW.MOUSE.x-(winsize.width/2), MW.MOUSE.y-(winsize.height/2));
+        //cc.log(MW.VIEWPORT.x + " " + MW.VIEWPORT.y);
         angle = angle * (180/Math.PI);
-        cc.log("velX = " + this.velX + " velY = " + this.velY + " X " + this.x + " Y " + this.y);
+        //cc.log("velX = " + this.velX + " velY = " + this.velY + " X " + this.x + " Y " + this.y);
         this.setRotation(angle);
     },
     init:function () {

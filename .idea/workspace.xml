@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57c6fdc3-6fc0-4758-a8dd-788f6111549d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BackgroundLayer.js" afterPath="$PROJECT_DIR$/src/BackgroundLayer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EventHandler.js" afterPath="$PROJECT_DIR$/src/EventHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlayScene.js" afterPath="$PROJECT_DIR$/src/PlayScene.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Player.js" afterPath="$PROJECT_DIR$/src/Player.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ShadowLayer.js" afterPath="$PROJECT_DIR$/src/ShadowLayer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/globals.js" afterPath="$PROJECT_DIR$/src/globals.js" />
     </list>
     <ignored path="jam.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,37 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Enemy_02.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Enemy_02.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="29" selection-start="1298" selection-end="1298" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1615">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Enemy_01.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Enemy_01.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="26" selection-start="965" selection-end="1103" vertical-scroll-proportion="0.0" vertical-offset="269" max-vertical-offset="1292">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayScene.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/PlayScene.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="38" selection-start="550" selection-end="550" vertical-scroll-proportion="0.20304017" vertical-offset="0" max-vertical-offset="921">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Enemy.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Enemy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="3" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
+            <state line="6" column="3" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
               <folding />
             </state>
           </provider>
@@ -70,7 +38,16 @@
       <file leaf-file-name="GameOver.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameOver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="5" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="595">
+            <state line="28" column="5" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayScene.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PlayScene.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="30" selection-start="923" selection-end="971" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
               <folding />
             </state>
           </provider>
@@ -79,7 +56,7 @@
       <file leaf-file-name="resource.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resource.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="43" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="425">
+            <state line="13" column="43" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
               <folding />
             </state>
           </provider>
@@ -88,7 +65,7 @@
       <file leaf-file-name="coin.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/coin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="52" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="408">
+            <state line="13" column="52" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
               <folding />
             </state>
           </provider>
@@ -97,7 +74,16 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="6" selection-start="1129" selection-end="1243" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="850">
+            <state line="31" column="6" selection-start="1129" selection-end="1129" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Player.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="64" column="32" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.0" vertical-offset="524" max-vertical-offset="1462">
               <folding />
             </state>
           </provider>
@@ -112,10 +98,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventHandler.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="EventHandler.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/EventHandler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="20" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="969">
+            <state line="18" column="0" selection-start="273" selection-end="273" vertical-scroll-proportion="0.33224756" vertical-offset="0" max-vertical-offset="969">
               <folding />
             </state>
           </provider>
@@ -143,9 +129,9 @@
         <option value="$PROJECT_DIR$/src/Enemy_01.js" />
         <option value="$PROJECT_DIR$/src/Enemy_02.js" />
         <option value="$PROJECT_DIR$/src/coin.js" />
+        <option value="$PROJECT_DIR$/src/GameOver.js" />
         <option value="$PROJECT_DIR$/src/EventHandler.js" />
         <option value="$PROJECT_DIR$/src/Player.js" />
-        <option value="$PROJECT_DIR$/src/GameOver.js" />
       </list>
     </option>
   </component>
@@ -570,42 +556,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="6" selection-start="1129" selection-end="1243" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StatusLayer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="3" selection-start="738" selection-end="738" vertical-scroll-proportion="0.46145493" vertical-offset="0" max-vertical-offset="921" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Enemy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="3" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Enemy_02.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="29" selection-start="1298" selection-end="1298" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/coin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="52" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="43" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
           <folding />
         </state>
       </provider>
@@ -617,6 +575,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="14" selection-start="2721" selection-end="2721" vertical-scroll-proportion="0.0" vertical-offset="167" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Enemy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="3" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="43" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/coin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="52" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="6" selection-start="1129" selection-end="1129" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlayScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="30" selection-start="923" selection-end="971" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameOver.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="5" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
@@ -624,30 +624,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
+    <entry file="file://$PROJECT_DIR$/src/Player.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="14" selection-start="2721" selection-end="2721" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
+        <state line="64" column="32" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.0" vertical-offset="524" max-vertical-offset="1462">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EventHandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="20" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="969">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Player.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="39" selection-start="2026" selection-end="2026" vertical-scroll-proportion="1.2551575" vertical-offset="51" max-vertical-offset="1428">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlayScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="38" selection-start="550" selection-end="550" vertical-scroll-proportion="0.20304017" vertical-offset="0" max-vertical-offset="921">
+        <state line="18" column="0" selection-start="273" selection-end="273" vertical-scroll-proportion="0.33224756" vertical-offset="0" max-vertical-offset="969">
           <folding />
         </state>
       </provider>

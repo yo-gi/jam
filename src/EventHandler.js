@@ -28,7 +28,7 @@ var GameLayer = cc.Layer.extend({
     },
     init:function () {
         // accept touch now!
-
+        MW.KEYS = [];
         cc.eventManager.addListener({
             event: cc.EventListener.KEYBOARD,
             onKeyPressed:function (key, event) {
