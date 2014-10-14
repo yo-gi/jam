@@ -3,8 +3,8 @@ var Player = cc.Sprite.extend({
     ctor:function () {
         this._super();
         this.init();
-        this.x = 800;
-        this.y = 300;
+        this.x = 1150;
+        this.y = 2350;
         this.velX = 0;
         this.velY = 0;
         this.speed = 4.5;
@@ -137,6 +137,11 @@ var Player = cc.Sprite.extend({
             cc.color(0, 0, 0, 255),
             5,
             cc.color(255, 255, 255, 255))*/
+        if(MW.COIN.TOTAL > 5)
+        {
+            cc.log("GameOver0");
+            cc.director.runScene(new Win());
+        }
     },
     init:function () {
         this._super();

@@ -57,7 +57,7 @@ var Enemy_01 = cc.Sprite.extend({
             this.distanceToPlayer = Math.sqrt((MW.PLAYER.x-this.x) * (MW.PLAYER.x-this.x) + (MW.PLAYER.y-this.y) * (MW.PLAYER.y-this.y));
             MW.ENEMYd[MW.ENEMY.TOTAL] = this.distanceToPlayer;
             MW.ENEMY.TOTAL++;
-            if(this.distanceToPlayer < 40)
+            if(this.distanceToPlayer < 60)
             {
                 var actionTo = new cc.MoveTo(2, cc.p(MW.PLAYER.x, MW.PLAYER.y));
                 this.Enemy1.runAction(new cc.Sequence(actionTo));
@@ -68,11 +68,11 @@ var Enemy_01 = cc.Sprite.extend({
             }
             if(this.distanceToPlayer > 255)
             {
-                //this.Enemy1.setOpacity(0);
+                this.Enemy1.setOpacity(0);
             }
             else
             {
-                //this.Enemy1.setOpacity(255-this.distanceToPlayer);
+                this.Enemy1.setOpacity(255-this.distanceToPlayer);
             }
         }
     },

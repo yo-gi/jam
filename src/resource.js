@@ -19,6 +19,7 @@ var res = {
     playagain_s_png : "res/playagain_s.png",
     black_png : "res/overlay.png",
     heartbeat_mp3 : "res/heartbeat.mp3",
+    Win_png: "res/Win.png",
     Fish_png: "res/Fish.png",
     Fish_plist: "res/Fish.plist",
     tile_1: "res/rock.png",
