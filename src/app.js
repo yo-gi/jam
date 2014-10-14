@@ -14,7 +14,7 @@ var MenuLayer = cc.Layer.extend({
         var centerpos = cc.p(winsize.width / 2, winsize.height / 2);
 
         //4. create a background image and set it's position at the center of the screen
-        var spritebg = new cc.Sprite(res.HelloWorld_png);
+        var spritebg = new cc.Sprite(res.Title_png);
         spritebg.setPosition(centerpos);
         this.addChild(spritebg);
 
@@ -27,7 +27,7 @@ var MenuLayer = cc.Layer.extend({
             new cc.Sprite(res.start_s_png), //select state image
             this.onPlay, this);
         var menu = new cc.Menu(menuItemPlay);  //7. create the menu
-        menu.setPosition(centerpos);
+        menu.setPosition(cc.p(4*winsize.width / 5, winsize.height / 4));
         this.addChild(menu);
     },
     onPlay : function(){

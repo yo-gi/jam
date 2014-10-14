@@ -96,13 +96,50 @@ var Player = cc.Sprite.extend({
                 cc.audioEngine.playEffect(res.heartbeat_mp3);
             }
         }
+        if((this.gameTicks % 100) < 20)
+        {
+            this.mainPlayer = cc.Sprite.create(res.Diver1_png, cc.rect(0,0,50,100));
+        }
+        else if((this.gameTicks % 100) < 40)
+        {
+            this.mainPlayer = cc.Sprite.create(res.Diver2_png, cc.rect(0,0,50,100));
+        }
+        else if((this.gameTicks % 100) < 60)
+        {
+            this.mainPlayer = cc.Sprite.create(res.Diver3_png, cc.rect(0,0,50,100));
+        }
+        else if((this.gameTicks % 100) < 80)
+        {
+            this.mainPlayer = cc.Sprite.create(res.Diver4_png, cc.rect(0,0,50,100));
+        }
+        else
+        {
+            this.mainPlayer = cc.Sprite.create(res.Diver5_png, cc.rect(0,0,50,100));
+        }
     },
     init:function () {
         this._super();
-        //create the hero sprite
         this.velX = 0;
         this.velY = 0;
-        this.mainPlayer = new cc.Sprite(res.Player_png);
+/*        cc.spriteFrameCache.addSpriteFrames(res.Divers_plist);
+        this.spriteSheet = new cc.SpriteBatchNode(res.Diver1_png);
+        this.addChild(this.spriteSheet);
+
+
+        var animFrames = [];
+        for (var i = 1; i < 6; i++) {
+            var str = "Diver" + i + ".png";
+            var frame = cc.spriteFrameCache.getSpriteFrame(str);
+            animFrames.push(frame);
+        }
+
+        var animation = new cc.Animation(animFrames, 0.1);
+        this.runningAction = new cc.RepeatForever(new cc.Animate(animation));
+        this.sprite = new cc.Sprite("#Diver1.png");
+        this.sprite.attr({x:this.x, y:this.y});
+        this.sprite.runAction(this.runningAction);
+        this.spriteSheet.addChild(this.sprite);*/
+        this.mainPlayer = new cc.Sprite(res.Diver1_png);
         this.addChild(this.mainPlayer);
         this.mainPlayer.setPosition(new cc.Point(this.x,this.y));
         this.schedule(this.update);
