@@ -7,7 +7,7 @@ var GameOver = cc.Layer.extend({
         var winsize = cc.director.getWinSize();
 
         //3. calculate the center point
-        var centerpos = cc.p(winsize.width / 2, (winsize.height / 2)-100);
+        var centerpos = cc.p(winsize.width / 2, winsize.height / 2);
 
         //4. create a background image and set it's position at the center of the screen
         var spritebg = new cc.Sprite(res.GameOver_png);
@@ -20,7 +20,7 @@ var GameOver = cc.Layer.extend({
             new cc.Sprite(res.playagain_s_png), //select state image
             this.onPlay, this);
         var menu = new cc.Menu(menuItemPlay);  //7. create the menu
-        menu.setPosition(centerpos);
+        menu.setPosition(cc.p(4*winsize.width / 5, winsize.height / 5));
         this.addChild(menu);
     },
     onPlay : function(){
