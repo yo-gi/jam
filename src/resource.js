@@ -29,7 +29,8 @@ var res = {
     tile_5: "res/center.png",
     tile_6: "res/starttile.png",
     tile_7: "res/upwall.png",
-    tile_8: "res/downwall.png"
+    tile_8: "res/downwall.png",
+    witch_png: "res/Witch01.png"
 };
 
 var g_resources = [];
