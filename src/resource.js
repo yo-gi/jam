@@ -15,7 +15,7 @@ var res = {
     GameOver_png : "res/GameOver.png",
     playagain_n_png : "res/playagain_n.png",
     playagain_s_png : "res/playagain_s.png",
-    black_png : "res/black.png",
+    black_png : "res/overlay.png",
     heartbeat_mp3 : "res/heartbeat.mp3"
 };
 

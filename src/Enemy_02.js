@@ -1,38 +1,38 @@
 var Enemy_02 = cc.Sprite.extend({
     Enemy2:null,
-    ctor:function () {
+    ctor:function (totalTicks, startX, startY, endX, endY) {
         var winsize = cc.director.getWinSize();
         this._super();
+        this.totalTicks = totalTicks;
+        this.total4 = 0;
         this.init();
         this.action = 0;
-        this.x = 70;
-        this.y = 100;
+        this.x = startX;
+        this.y = startY;
+        this.velX = (endX - this.x)/this.total4;
+        this.velY = (endY - this.y)/this.total4;
         this.gameTicks = 0;
         this.distanceToPlayer = 0;
         this.GameOver = 0;
-        //W = 87
-        //A = 65
-        //S = 83
-        //D = 68
     },
     update:function(dt){
         if(this.GameOver == 0)
         {
-            if((this.gameTicks % 600) < 150)
+            if((this.gameTicks % this.totalTicks) < this.total4)
             {
-                this.y = this.y + 1.6;
+                this.y = this.y + this.velY;
             }
-            else if((this.gameTicks % 600) < 300)
+            else if((this.gameTicks % this.totalTicks) < 2*this.total4)
             {
-                this.x = this.x + 2.2;
+                this.x = this.x + this.velX;
             }
-            else if((this.gameTicks % 600) < 450)
+            else if((this.gameTicks % this.totalTicks) < 3*this.total4)
             {
-                this.y = this.y - 1.6;
+                this.y = this.y - this.velY;
             }
             else
             {
-                this.x = this.x - 2.2;
+                this.x = this.x - this.velX;
             }
             this.gameTicks++;
             if(this.x >= 1250)
@@ -87,10 +87,8 @@ var Enemy_02 = cc.Sprite.extend({
         this.Enemy2 = new cc.Sprite(res.Enemy_02_png);
         this.addChild(this.Enemy2);
         this.Enemy2.setPosition(new cc.Point(this.x,this.y));
+        this.total4 = this.totalTicks/4;
 
-        //create the move action
-        /*        var actionTo = cc.MoveTo.create(0.5, cc.p(300, 50));
-         this.Enemy2.runAction(cc.Sequence.create(actionTo));*/
         this.schedule(this.update);
     }
 });

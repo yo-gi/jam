@@ -8,7 +8,7 @@ var PlayScene = cc.Scene.extend({
         this.gameLayer.addChild(new GameLayer());
         this.gameLayer.addChild(new BackgroundLayer(), 0 , TagOfLayer.Background);
         this.gameLayer.addChild(new Enemy());
-        //this.gameLayer.addChild(new ShadowLayer(), 0, TagOfLayer.Shadow);
+        this.gameLayer.addChild(new ShadowLayer(), 0, TagOfLayer.Shadow);
         this.gameLayer.addChild(new Player(), 0 , TagOfLayer.Player);
         this.addChild(this.gameLayer);
         this.scheduleUpdate();
