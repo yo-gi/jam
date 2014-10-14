@@ -22,6 +22,11 @@ var GameOver = cc.Layer.extend({
         var menu = new cc.Menu(menuItemPlay);  //7. create the menu
         menu.setPosition(cc.p(4*winsize.width / 5, winsize.height / 5));
         this.addChild(menu);
+        this.labelCoin = new cc.LabelTTF("Total Treasure Collected: " + MW.COIN.TOTAL, "Helvetica", 50);
+        this.labelCoin.setColor(cc.color(255, 255, 255));
+        this.labelCoin.setPosition(cc.p(400, 600));
+        this.addChild(this.labelCoin);
+        MW.COIN.TOTAL = 0;
     },
     onPlay : function(){
         cc.log("==onplay clicked again");

@@ -10,6 +10,8 @@ var Enemy_01 = cc.Sprite.extend({
         this.speed = speed;
         this.x = startX;
         this.y = startY;
+        this.prevx = 0;
+        this.prevy = 0;
         this.ampX = (Math.abs(endX - this.x)/2);
         this.ampY = (Math.abs(endY - this.y)/2);
         var offsetX = Math.abs(endX + this.x)/2;
@@ -27,11 +29,13 @@ var Enemy_01 = cc.Sprite.extend({
     update:function(dt){
         if(this.GameOver == 0)
         {
+            this.prevx = this.x;
+            this.prevy = this.y;
             this.x = (this.ampX * Math.sin((this.gameTicks * 0.5 * Math.PI)/this.speed)) + this.A;
             this.y = (this.ampY * Math.sin((this.gameTicks * 0.5 * Math.PI)/this.speed)) + this.B;
             //
             this.gameTicks++;
-            if(this.x >= 1250)
+/*            if(this.x >= 1250)
             {
                 this.x = 1250;
             }
@@ -47,11 +51,12 @@ var Enemy_01 = cc.Sprite.extend({
             else if(this.y <= 10)
             {
                 this.y = 10;
-            }
+            }*/
 
-            //this.rotate();
+            this.rotate();
             this.distanceToPlayer = Math.sqrt((MW.PLAYER.x-this.x) * (MW.PLAYER.x-this.x) + (MW.PLAYER.y-this.y) * (MW.PLAYER.y-this.y));
-            MW.ENEMYd[1] = this.distanceToPlayer;
+            MW.ENEMYd[MW.ENEMY.TOTAL] = this.distanceToPlayer;
+            MW.ENEMY.TOTAL++;
             if(this.distanceToPlayer < 40)
             {
                 var actionTo = new cc.MoveTo(2, cc.p(MW.PLAYER.x, MW.PLAYER.y));
@@ -63,16 +68,17 @@ var Enemy_01 = cc.Sprite.extend({
             }
             if(this.distanceToPlayer > 255)
             {
-                this.Enemy1.setOpacity(0);
+                //this.Enemy1.setOpacity(0);
             }
             else
             {
-                this.Enemy1.setOpacity(255-this.distanceToPlayer);
+                //this.Enemy1.setOpacity(255-this.distanceToPlayer);
             }
         }
     },
     rotate:function(){
-        var angle = Math.atan2(MW.PLAYER.x-this.x, MW.PLAYER.y-this.y);
+        //var angle = Math.atan2(MW.PLAYER.x-this.x, MW.PLAYER.y-this.y);
+        var angle = Math.atan2(this.y-this.prevy, this.prevx - this.x);
         angle = angle * (180/Math.PI);
         this.setRotation(angle);
     },

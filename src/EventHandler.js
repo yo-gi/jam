@@ -24,6 +24,9 @@ MW.PLAYER.y = 0;
 
 MW.ENEMYd = [];
 
+MW.ENEMY = {};
+MW.ENEMY.TOTAL = 0;
+
 MW.SEGMENTS = [];
 MW.RECTS = [];
 

@@ -4,14 +4,25 @@ var PlayScene = cc.Scene.extend({
         this._super();
 
         //add three layer in the right order
+
         this.gameLayer = new cc.Layer();
         this.gameLayer.addChild(new GameLayer());
         this.gameLayer.addChild(new BackgroundLayer(), 0 , TagOfLayer.Background);
+        //Add Coins here
+        this.gameLayer.addChild(new Coin(250, 1050));
+        this.gameLayer.addChild(new Coin(650, 1050));
+        this.gameLayer.addChild(new Coin(450, 250));
+        this.gameLayer.addChild(new Coin(950, 650));
+        this.gameLayer.addChild(new Coin(1050, 750));
+        this.gameLayer.addChild(new Coin(1550, 450));
+        this.gameLayer.addChild(new Coin(1350, 1050));
+        this.gameLayer.addChild(new Coin(1550, 1250));
+        this.gameLayer.addChild(new Coin(1550, 1350));
+        this.gameLayer.addChild(new Coin(1750, 1350));
         this.gameLayer.addChild(new Enemy());
-        this.gameLayer.addChild(new Coin(100, 100));
-        this.gameLayer.addChild(new ShadowLayer(), 0, TagOfLayer.Shadow);
+        //this.gameLayer.addChild(new ShadowLayer(), 0, TagOfLayer.Shadow);
         this.gameLayer.addChild(new Player(), 0 , TagOfLayer.Player);
-        this.gameLayer.addChild(new StatusLayer());
+        this.gameLayer.addChild(new StatusLayer(300, 200));
         this.addChild(this.gameLayer);
         this.scheduleUpdate();
     },

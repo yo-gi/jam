@@ -10,7 +10,7 @@ var Player = cc.Sprite.extend({
         this.speed = 4.5;
         this.friction = 0.85;
         this.gameTicks = 0;
-        this.closest = 0;
+        this.closest = 999999;
         this.tileWidth = map01['tilewidth'];
         this.drawer = cc.DrawNode.create();
         this.addChild(this.drawer, 10);
@@ -72,13 +72,12 @@ var Player = cc.Sprite.extend({
         {
             this.y = 1;
         }
-        if(MW.ENEMYd[1] < MW.ENEMYd[2])
+        for(var i = 0; i < MW.ENEMY.TOTAL; i++)
         {
-            this.closest = MW.ENEMYd[1];
-        }
-        else
-        {
-            this.closest = MW.ENEMYd[2];
+            if(MW.ENEMYd[i] < this.closest)
+            {
+                this.closest = MW.ENEMYd[i];
+            }
         }
 /*        cc.log(this.closest);
         for(var i = 1; i <= 2; ++i)
@@ -88,6 +87,7 @@ var Player = cc.Sprite.extend({
                 this.closest = MW.ENEMYd[i];
             }
         }*/
+        //cc.log(this.closest);
         var winsize = cc.director.getWinSize();
         MW.PLAYER.x = this.x;
         MW.PLAYER.y = this.y;

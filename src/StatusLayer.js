@@ -3,9 +3,11 @@ var StatusLayer = cc.Layer.extend({
     labelMeter:null,
     coins:0,
 
-    ctor:function () {
+    ctor:function (inX, inY) {
         this._super();
         this.init();
+        this.A = inX;
+        this.B = inY;
         this.x = MW.PLAYER.x;
         this.y = MW.PLAYER.y;
     },
@@ -24,9 +26,6 @@ var StatusLayer = cc.Layer.extend({
         this.labelCoin.setPosition(cc.p(this.x + 300, this.y + 200));
         this.addChild(this.labelCoin);
 
-        this.labelMeter = new cc.LabelTTF("0M", "Helvetica", 20);
-        this.labelMeter.setPosition(cc.p(winsize.width - 70, winsize.height - 20));
-        this.addChild(this.labelMeter);
         this.schedule(this.update);
     },
     addTreasure:function (num) {
