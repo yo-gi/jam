@@ -6,15 +6,15 @@ var Enemy = cc.Scene.extend({
         MW.ENEMYd.push(0);
         MW.ENEMYd.push(0);
         //(speed, startX, startY, endX, endY)
-        this.addChild(new Enemy_01(80, 250 ,250 ,2150 ,750));
-        this.addChild(new Enemy_01(80, 2050 ,2150 ,550 ,1450));
-        this.addChild(new Enemy_01(80, 2250 ,450 ,250 ,2350));
-        this.addChild(new Enemy_01(80, 1450 ,450 ,2850 ,850));
-        this.addChild(new Enemy_01(80, 2950 ,250 ,1950 ,750));
-        this.addChild(new Enemy_01(80, 250 ,250 ,2150 ,950));
-        this.addChild(new Enemy_01(80, 250 ,150 ,2950 ,350));
-        this.addChild(new Enemy_01(80, 2150 ,2050 ,350 ,2550));
-        this.addChild(new Enemy_01(80, 1950 ,1650 ,2250 ,550));
+        this.addChild(new Enemy_01(240, 250 ,250 ,2150 ,750));
+        this.addChild(new Enemy_01(140, 2050 ,2150 ,550 ,1450));
+        this.addChild(new Enemy_01(140, 2250 ,450 ,250 ,2350));
+        this.addChild(new Enemy_01(140, 1450 ,450 ,2850 ,850));
+        this.addChild(new Enemy_01(140, 2950 ,250 ,1950 ,750));
+        this.addChild(new Enemy_01(240, 250 ,250 ,2150 ,950));
+        this.addChild(new Enemy_01(140, 250 ,150 ,2950 ,350));
+        this.addChild(new Enemy_01(140, 2150 ,2050 ,350 ,2550));
+        this.addChild(new Enemy_01(140, 1950 ,1650 ,2250 ,550));
 /*        this.addChild(new Enemy_01(80, 1050, 250, 250, 250));
         this.addChild(new Enemy_01(80, 2750, 150, 3850, 150));
         this.addChild(new Enemy_01(80, 2850, 350, 2550, 350));
