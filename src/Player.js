@@ -131,7 +131,7 @@ var Player = cc.Sprite.extend({
         this.schedule(this.update);
     },
     collideRect:function() {
-        return cc.rect(this.x, this.y, this.contentsize.width, this.contentsize.height);
+        return cc.rect(this.x, this.y, 1, 1);
     },
     collisionDetected:function() {
         for (var i = 0; i < MW.MAP.data.length; ++i) {
@@ -139,8 +139,9 @@ var Player = cc.Sprite.extend({
             if (MW.MAP.data[i].collideKey == 3) {
                 if (this.collide(this, MW.MAP.data[i])) {
                     console.log("true " + MW.MAP.data[i].x + ", " + MW.MAP.data[i].y);
-                    MW.MAP.data[i].setOpacity(125);
+                    //MW.MAP.data[i].setOpacity(125);
                     return true;
+                    //return false;
                 }
                 else {
                     //console.log("false");
@@ -152,7 +153,7 @@ var Player = cc.Sprite.extend({
     collide:function(a, b) {
         var aRect = this.collideRect();
         var bRect = cc.rect(b.x, b.y, this.tileWidth, this.tilewidth);
-        //console.log("a: " + bRect.x + ", " + bRect.y);
+        console.log("b: " + bRect.x + ", " + bRect.y);
 
         return cc.rectIntersectsRect(aRect, bRect);
     }
