@@ -46,8 +46,7 @@ var BackgroundLayer = cc.Layer.extend({
     points:null,
     uniquePoints:null,
     winSize: null,
-    map00:null,
-    map01:null,
+    map:null,
     mapWidth:0,
     mapIndex:0,
     ctor:function () {
@@ -61,15 +60,48 @@ var BackgroundLayer = cc.Layer.extend({
         this.winSize = cc.director.getWinSize();
 
         this.loadSegments();
-        this.drawPolygons();
-        this.schedule(this.update);
+        this.loadMap();
+        //this.schedule(this.update);
     },
     update: function(dt) {
         //this.drawLines(Math.floor(Math.random() * 400) + 1, Math.floor(Math.random() * 400) + 1);
     },
+    loadMap: function() {
+        this.map = [];
+        console.log(map01);
+        var data = map01['layers'][0]['data'];
+        var height = map01['height'];
+        var tileWidth = map01['tilewidth'];
+        console.log(data);
+        for (var i = 0; i < height; ++i) {
+            for (var j = 0; j < height; ++j) {
+                //console.log(map01.keyMap[data[i * height + j]]);
+                var key = data[i * height + j];
+                if (key != 1) continue;
+                var sprite = new cc.Sprite(map01.keyMap[key]);
+                var x = i * tileWidth, y = j * tileWidth;
+                sprite.setPosition(cc.p(x, y));
+                sprite.setAnchorPoint(cc.p(0, 0));
+                sprite.collideRect = function() {
+                    return cc.rect(x, y, tileWidth, tileWidth);
+                };
+                this.addChild(sprite);
+                this.map.push(sprite);
+                if (key == 1) {
+                    this.loadSegment(x, y, tileWidth);
+                }
+            }
+        }
+    },
+    loadSegment: function(x, y, width) {
+        MW.SEGMENTS.push({a: {x: x, y: y}, b:{x: x, y:y+width}});
+        MW.SEGMENTS.push({a: {x: x, y: y}, b:{x: x+width, y:y}});
+        MW.SEGMENTS.push({a: {x: x+width, y:y+width}, b:{x: x, y:y+width}});
+        MW.SEGMENTS.push({a: {x: x+width, y:y+width}, b:{x: x+width, y:y}});
+    },
     loadSegments: function() {
         // Map segments
-        for (var j = 0; j < map01.length; ++j) {
+        /*for (var j = 0; j < map01.length; ++j) {
             var base = map01[j][0];
             var points = map01[j][1];
             for (var i = 0; i < points.length - 1; ++i) {
@@ -87,28 +119,12 @@ var BackgroundLayer = cc.Layer.extend({
             y2 = base.y + points[0].y;
             var point = {a:{x:x1, y:y1}, b:{x:x2, y:y2}};
             MW.SEGMENTS.push(point);
-        }
+        }*/
 
         //corner segments
         MW.SEGMENTS.push({a: {x: 0, y: 0}, b:{x: 0, y:MW.MAP.yextreme}});
         MW.SEGMENTS.push({a: {x: 0, y: 0}, b:{x: MW.MAP.xextreme, y:0}});
         MW.SEGMENTS.push({a: {x: MW.MAP.xextreme, y: MW.MAP.yextreme}, b:{x: 0, y:MW.MAP.yextreme}});
         MW.SEGMENTS.push({a: {x: MW.MAP.xextreme, y: MW.MAP.yextreme}, b:{x: MW.MAP.xextreme, y:0}});
-    },
-    drawPolygons: function() {
-        var winSize = this.winSize;
-        var draw = cc.DrawNode.create();
-        this.addChild( draw, 1 );
-
-        for (var i = 0; i < MW.SEGMENTS.length; ++i) {
-            var segment = MW.SEGMENTS[i];
-            draw.drawDot(cc.p(segment.a.x, segment.a.y), 5, cc.color(0, 255, 0, 255));
-            draw.drawSegment(
-                cc.p(segment.a.x, segment.a.y),
-                cc.p(segment.b.x, segment.b.y),
-                1,
-                cc.color(255, 255, 255, 255)
-            );
-        }
     }
 });

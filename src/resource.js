@@ -8,7 +8,10 @@ var res = {
     background_1_png : "res/testmap_01.png",
     Enemy_01_png : "res/enemy_01.png",
     Enemy_02_png : "res/enemy_02.png",
-    coin_png : "res/coin.png"
+    coin_png : "res/coin.png",
+    map_01: "res/map01.tmx",
+    tile_1: "res/1.png",
+    tile_3: "res/3.png"
 };
 
 var g_resources = [];

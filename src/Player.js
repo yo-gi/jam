@@ -39,7 +39,7 @@ var Player = cc.Sprite.extend({
         this.y += this.velY;
         this.velX *= this.friction;
         this.x += this.velX;
-        if(this.x >= MW.MAP.xextreme - 1)
+        /*if(this.x >= MW.MAP.xextreme - 1)
         {
             this.x = MW.MAP.xextreme - 1;
         }
@@ -54,7 +54,7 @@ var Player = cc.Sprite.extend({
         else if(this.y <= 1)
         {
             this.y = 1;
-        }
+        }*/
         MW.PLAYER.x = this.x;
         MW.PLAYER.y = this.y;
         var angle = Math.atan2(MW.MOUSE.x-this.x,MW.MOUSE.y-this.y);

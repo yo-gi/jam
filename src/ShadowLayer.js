@@ -141,16 +141,16 @@ var ShadowLayer = cc.Layer.extend({
                         cc.p(player.x, player.y),
                         cc.p(intersects[i].x|0, intersects[i].y|0),
                         cc.p(intersects[i+1].x|0, intersects[i+1].y|0)],
-                    cc.color(123, 123, 250, 255),
+                    cc.color(255, 255, 255, 125),
                     1,
-                    cc.color(255, 255, 255, 0));
+                    cc.color(255, 255, 255, 255));
                 ret_val.push(cc.p(intersects[i].x|0, intersects[i].y|0));
             }
             draw.drawPoly([
                     cc.p(player.x, player.y),
                     cc.p(intersects[len-1].x|0, intersects[len-1].y|0),
                     cc.p(intersects[0].x|0, intersects[0].y|0)],
-                cc.color(123, 123, 250, 255),
+                cc.color(255, 255, 255, 125),
                 1,
                 cc.color(255, 255, 255, 0));
             ret_val.push(cc.p(intersects[i].x|0, intersects[i].y|0));
