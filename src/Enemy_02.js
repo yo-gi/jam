@@ -67,11 +67,11 @@ var Enemy_02 = cc.Sprite.extend({
             }
             if(this.distanceToPlayer > 255)
             {
-                //this.Enemy2.setOpacity(0);
+                this.Enemy2.setOpacity(0);
             }
             else
             {
-                //this.Enemy2.setOpacity(255-this.distanceToPlayer);
+                this.Enemy2.setOpacity(255-this.distanceToPlayer);
             }
         }
     },
