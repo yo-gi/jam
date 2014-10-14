@@ -34,18 +34,12 @@ var BackgroundLayer = cc.Layer.extend({
         for (var i = 0; i < height; ++i) {
             for (var j = 0; j < height; ++j) {
                 var key = data[i * height + j];
-                if (key != 3) continue;
                 var sprite = new cc.Sprite(map01.keyMap[key]);
                 var x = i * tileWidth, y = j * tileWidth;
-                /*draw.drawRect(
-                    cc.p(x, y),
-                    cc.p(x+tileWidth, y+tileWidth),
-                    cc.color(0, 0, 0, 255),
-                    1,
-                    cc.color(255, 255, 255, 255));*/
                 sprite.setPosition(cc.p(x, y));
                 sprite.setAnchorPoint(cc.p(0, 0));
-                //console.log(x + ", " + y);
+                sprite._setWidth(tileWidth);
+                sprite._setHeight(tileWidth);
                 sprite.collideKey = key;
                 this.addChild(sprite);
                 MW.MAP.data.push(sprite);

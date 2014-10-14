@@ -54,7 +54,7 @@ var Player = cc.Sprite.extend({
             //console.log(this.x + ", " + this.y);
         }
 
-        /*if(this.x >= MW.MAP.xextreme - 1)
+        if(this.x >= MW.MAP.xextreme - 1)
         {
             this.x = MW.MAP.xextreme - 1;
         }
@@ -69,7 +69,7 @@ var Player = cc.Sprite.extend({
         else if(this.y <= 1)
         {
             this.y = 1;
-        }*/
+        }
         if(MW.ENEMYd[1] < MW.ENEMYd[2])
         {
             this.closest = MW.ENEMYd[1];
@@ -108,16 +108,16 @@ var Player = cc.Sprite.extend({
                 cc.audioEngine.playEffect(res.heartbeat_mp3);
             }
         }
-        this.drawer.clear();
+        //this.drawer.clear();
         //console.log(this.contentsize.width + ", " + this.contentsize.height);
 
 
-        this.drawer.drawRect(
+        /*this.drawer.drawRect(
             cc.p(0, 0),
             cc.p(this.contentsize.width, this.contentsize.height),
             cc.color(0, 0, 0, 255),
             5,
-            cc.color(255, 255, 255, 255));
+            cc.color(255, 255, 255, 255));*/
     },
     init:function () {
         this._super();
@@ -131,29 +131,22 @@ var Player = cc.Sprite.extend({
         this.schedule(this.update);
     },
     collideRect:function() {
-        return cc.rect(this.x, this.y, 1, 1);
+        return cc.rect(this.x, this.y, this.contentsize.width/3, this.contentsize.height/3);
     },
     collisionDetected:function() {
         for (var i = 0; i < MW.MAP.data.length; ++i) {
-            //console.log(MW.MAP.data[i].collideKey);
-            if (MW.MAP.data[i].collideKey == 3) {
+            if (MW.MAP.unwalkable.indexOf(MW.MAP.data[i].collideKey) > -1) {
                 if (this.collide(this, MW.MAP.data[i])) {
-                    console.log("true " + MW.MAP.data[i].x + ", " + MW.MAP.data[i].y);
-                    //MW.MAP.data[i].setOpacity(125);
                     return true;
-                    //return false;
-                }
-                else {
-                    //console.log("false");
                 }
             }
         }
         return false;
     },
     collide:function(a, b) {
+
         var aRect = this.collideRect();
-        var bRect = cc.rect(b.x, b.y, this.tileWidth, this.tilewidth);
-        console.log("b: " + bRect.x + ", " + bRect.y);
+        var bRect = cc.rect(b.x, b.y, this.tileWidth, this.tileWidth);
 
         return cc.rectIntersectsRect(aRect, bRect);
     }
