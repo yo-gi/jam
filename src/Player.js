@@ -42,6 +42,7 @@ var Player = cc.Sprite.extend({
                 this.velX++;
             }
         }
+
         this.velY *= this.friction;
         this.y += this.velY;
         this.velX *= this.friction;
@@ -123,10 +124,10 @@ var Player = cc.Sprite.extend({
         this._super();
         this.velX = 0;
         this.velY = 0;
-/*        cc.spriteFrameCache.addSpriteFrames(res.Divers_plist);
-        this.spriteSheet = new cc.SpriteBatchNode(res.Diver1_png);
-        this.addChild(this.spriteSheet);
 
+        cc.spriteFrameCache.addSpriteFrames(res.Divers_plist);
+        this.spriteSheet = new cc.SpriteBatchNode(res.Divers_png);
+        this.addChild(this.spriteSheet);
 
         var animFrames = [];
         for (var i = 1; i < 6; i++) {
@@ -135,15 +136,16 @@ var Player = cc.Sprite.extend({
             animFrames.push(frame);
         }
 
-        var animation = new cc.Animation(animFrames, 0.1);
-        this.runningAction = new cc.RepeatForever(new cc.Animate(animation));
-        this.sprite = new cc.Sprite("#Diver1.png");
-        this.sprite.attr({x:this.x, y:this.y});
-        this.sprite.runAction(this.runningAction);
-        this.spriteSheet.addChild(this.sprite);*/
-        this.mainPlayer = new cc.Sprite(res.Diver1_png);
-        this.addChild(this.mainPlayer);
-        this.mainPlayer.setPosition(new cc.Point(this.x,this.y));
+        var animation = new cc.Animation(animFrames, 0.25);
+        this.swimmingAction = new cc.RepeatForever(new cc.Animate(animation));
+
+        this.mainPlayer = new cc.Sprite("#Diver1.png");
+        this.mainPlayer.attr({x:this.x, y:this.y});
+        this.mainPlayer.runAction(this.swimmingAction);
+        this.spriteSheet.addChild(this.mainPlayer);
+
+        /*this.addChild(this.mainPlayer);
+        this.mainPlayer.setPosition(new cc.Point(this.x,this.y));*/
         this.contentsize = this.mainPlayer.getContentSize();
         this.schedule(this.update);
     },
