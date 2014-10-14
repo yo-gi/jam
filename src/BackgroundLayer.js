@@ -17,24 +17,25 @@ var BackgroundLayer = cc.Layer.extend({
         this.winSize = cc.director.getWinSize();
 
         this.loadSegments();
-        this.loadMap();
+        this.loadMap(map02);
         //this.schedule(this.update);
     },
     update: function(dt) {
         //this.drawLines(Math.floor(Math.random() * 400) + 1, Math.floor(Math.random() * 400) + 1);
     },
-    loadMap: function() {
+    loadMap: function(newMap) {
         var draw = cc.DrawNode.create();
         this.addChild(draw, 10);
-        console.log(map01);
+        console.log(newMap);
         MW.MAP.data = [];
-        var data = map01['layers'][0]['data'];
-        var height = map01['height'];
-        var tileWidth = map01['tilewidth'];
-        for (var i = 0; i < height; ++i) {
+        var data = newMap['layers'][1]['data'];
+        var height = newMap['height'];
+        var width = newMap['width'];
+        var tileWidth = newMap['tilewidth'];
+        for (var i = 0; i < width; ++i) {
             for (var j = 0; j < height; ++j) {
-                var key = data[i * height + j];
-                var sprite = new cc.Sprite(map01.keyMap[key]);
+                var key = data[i * width + j];
+                var sprite = new cc.Sprite(newMap.keyMap[key]);
                 var x = i * tileWidth, y = j * tileWidth;
                 sprite.setPosition(cc.p(x, y));
                 sprite.setAnchorPoint(cc.p(0, 0));

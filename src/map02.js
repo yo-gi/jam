@@ -475,14 +475,14 @@ var map02 = { "height":15,
         "x":0,
         "y":0
     }],
-    keyMap: [],
+    keyMap: [0, 0, 0, 0, res.tile_1, res.tile_2, res.tile_4, res.tile_3],
     "orientation":"orthogonal",
     "properties":
     {
 
     },
     "renderorder":"right-down",
-    "tileheight":50,
+    "tileheight":100,
     "tilesets":[
     {
         "firstgid":1,
@@ -496,7 +496,7 @@ var map02 = { "height":15,
 
         },
         "spacing":0,
-        "tileheight":50,
+        "tileheight":100,
         "tilewidth":50
     },
     {
@@ -514,7 +514,7 @@ var map02 = { "height":15,
         "tileheight":50,
         "tilewidth":50
     }],
-    "tilewidth":50,
+    "tilewidth":100,
     "version":1,
     "width":20
 };

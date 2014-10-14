@@ -3,8 +3,8 @@ var Player = cc.Sprite.extend({
     ctor:function () {
         this._super();
         this.init();
-        this.x = 00;
-        this.y = 00;
+        this.x = 200;
+        this.y = 200;
         this.velX = 0;
         this.velY = 0;
         this.speed = 4.5;
@@ -14,6 +14,7 @@ var Player = cc.Sprite.extend({
         this.tileWidth = map01['tilewidth'];
         this.drawer = cc.DrawNode.create();
         this.addChild(this.drawer, 10);
+        //this.animStart = false;
 
         //W = 87
         //A = 65
@@ -112,6 +113,16 @@ var Player = cc.Sprite.extend({
         //this.drawer.clear();
         //console.log(this.contentsize.width + ", " + this.contentsize.height);
 
+        /*if (this.animStart == false) {
+            if (this.velX != 0 || this.velY != 0) {
+                this.animStart = true;
+                this.mainPlayer.runAction(this.swimmingAction);
+            }
+            else {
+                this.mainPlayer.stopAction(this.swimmingAction);
+                this.animStart = false;
+            }
+        }*/
 
         /*this.drawer.drawRect(
             cc.p(0, 0),

@@ -18,7 +18,13 @@ var res = {
     playagain_n_png : "res/playagain_n.png",
     playagain_s_png : "res/playagain_s.png",
     black_png : "res/overlay.png",
-    heartbeat_mp3 : "res/heartbeat.mp3"
+    heartbeat_mp3 : "res/heartbeat.mp3",
+    Fish_png: "res/Fish.png",
+    Fish_plist: "res/Fish.plist",
+    tile_1: "res/rock.png",
+    tile_2: "res/ctile.png",
+    tile_3: "res/rwall.png",
+    tile_4: "res/lwall.png"
 };
 
 var g_resources = [];
