@@ -1,13 +1,27 @@
 var Coin = cc.Sprite.extend({
     mainCoin:null,
-    ctor:function () {
+    ctor:function (X, Y) {
         this._super();
         this.init();
-        this.x = 650;
-        this.y = 300;
+        this.x = X;
+        this.y = Y;
+        this.visited = 0;
+        this.distanceToPlayer = 0;
     },
     update:function(dt){
+        this.distanceToPlayer = Math.sqrt((MW.PLAYER.x-this.x) * (MW.PLAYER.x-this.x) + (MW.PLAYER.y-this.y) * (MW.PLAYER.y-this.y));
+        if(this.distanceToPlayer < 40)
+        {
+            if(this.visited == 0)
+            {
+                this.visited = 1;
+                MW.COIN.TOTAL++;
+                cc.log(MW.COIN.TOTAL);
+                this.removeAllChildren();
+                this.mainCoin = null;
 
+            }
+        }
     },
     init:function () {
         this._super();
