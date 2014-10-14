@@ -23,24 +23,25 @@ var Player = cc.Sprite.extend({
     },
     update:function(dt){
         this.gameTicks++;
+        var winsize = cc.director.getWinSize();
+        MW.PLAYER.x = this.x;
+        MW.PLAYER.y = this.y;
+        var angle = Math.atan2(MW.MOUSE.x-(winsize.width/2), MW.MOUSE.y-(winsize.height/2));
+
+        //cc.log(MW.VIEWPORT.x + " " + MW.VIEWPORT.y);
+        var degreesangle = angle * (180/Math.PI);
+        cc.log("degrees: " + degreesangle);
+        this.setRotation(degreesangle);
         if (MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) {
             if (this.velY < this.speed) {
-                this.velY++;
+                this.velY += Math.cos(angle);
+                this.velX += Math.sin(angle);
             }
         }
         if (MW.KEYS[cc.KEY.s] || MW.KEYS[cc.KEY.down]) {
             if (this.velY > -this.speed) {
-                this.velY--;
-            }
-        }
-        if (MW.KEYS[cc.KEY.a] || MW.KEYS[cc.KEY.left]) {
-            if (this.velX > -this.speed) {
-                this.velX--;
-            }
-        }
-        if (MW.KEYS[cc.KEY.d] || MW.KEYS[cc.KEY.right]) {
-            if (this.velX < this.speed) {
-                this.velX++;
+                this.velY -= 1*Math.cos(angle);
+                this.velX -= 1*Math.sin(angle);
             }
         }
 
@@ -51,8 +52,8 @@ var Player = cc.Sprite.extend({
         if (this.collisionDetected()) {
             this.y -= (this.velY + 0);
             this.x -= (this.velX + 0);
-            this.velY /= this.friction;
-            this.velX /= this.friction;
+            this.velY = 0;
+            this.velX = 0;
             //console.log(this.x + ", " + this.y);
         }
 
@@ -88,14 +89,6 @@ var Player = cc.Sprite.extend({
                 this.closest = MW.ENEMYd[i];
             }
         }*/
-        var winsize = cc.director.getWinSize();
-        MW.PLAYER.x = this.x;
-        MW.PLAYER.y = this.y;
-        var angle = Math.atan2(MW.MOUSE.x-(winsize.width/2), MW.MOUSE.y-(winsize.height/2));
-        //cc.log(MW.VIEWPORT.x + " " + MW.VIEWPORT.y);
-        angle = angle * (180/Math.PI);
-        //cc.log("velX = " + this.velX + " velY = " + this.velY + " X " + this.x + " Y " + this.y);
-        this.setRotation(angle);
         if(this.closest > 150)
         {
             if((this.gameTicks % 100) == 0)
