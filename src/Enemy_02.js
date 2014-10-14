@@ -93,23 +93,9 @@ var Enemy_02 = cc.Sprite.extend({
     init:function () {
         this._super();
 
-        cc.spriteFrameCache.addSpriteFrames(res.Fish_plist);
-        this.spriteSheet = new cc.SpriteBatchNode(res.Fish_png);
-        this.addChild(this.spriteSheet);
-
-        var animFrames = [];
-        for (var i = 1; i < 4; ++i) {
-            var str = "Fish0" + i + ".png";
-            var frame = cc.spriteFrameCache.getSpriteFrame(str);
-            animFrames.push(frame);
-        }
-
-        var animation = new cc.Animation(animFrames, 0.1);
-        this.swimmingAction = new cc.RepeatForever(new cc.Animate(animation));
-        this.Enemy2 = new cc.Sprite("#Fish01.png");
+        this.Enemy2 = new cc.Sprite(res.witch_png);
         this.Enemy2.attr({x:this.x, y:this.y});
-        this.Enemy2.runAction(this.swimmingAction);
-        this.spriteSheet.addChild(this.Enemy2);
+        this.addChild(this.Enemy2);
         this.Enemy2.setRotation(190 * 180 / Math.PI);
 /*
         this.Enemy1 = new cc.Sprite("#.png");
