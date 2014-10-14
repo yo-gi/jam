@@ -17,10 +17,7 @@ MW.PLAYER = {};
 MW.PLAYER.x = 0;
 MW.PLAYER.y = 0;
 
-MW.ENEMY1 = {};
-MW.ENEMY1.d = 0;
-MW.ENEMY2 = {};
-MW.ENEMY2.d = 0;
+MW.ENEMYd = [];
 
 MW.SEGMENTS = [];
 MW.RECTS = [];

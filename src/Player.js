@@ -58,14 +58,22 @@ var Player = cc.Sprite.extend({
         {
             this.y = 1;
         }
-        if(MW.ENEMY1.d < MW.ENEMY2.d)
+        if(MW.ENEMYd[1] < MW.ENEMYd[2])
         {
-            this.closest = MW.ENEMY1.d;
+            this.closest = MW.ENEMYd[1];
         }
         else
         {
-            this.closest = MW.ENEMY2.d;
+            this.closest = MW.ENEMYd[2];
         }
+/*        cc.log(this.closest);
+        for(var i = 1; i <= 2; ++i)
+        {
+            if((this.closest == 0) || (MW.ENEMYd[i] < this.closest))
+            {
+                this.closest = MW.ENEMYd[i];
+            }
+        }*/
         var winsize = cc.director.getWinSize();
         MW.PLAYER.x = this.x;
         MW.PLAYER.y = this.y;

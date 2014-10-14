@@ -55,7 +55,7 @@ var Enemy_02 = cc.Sprite.extend({
             this.rotate();
 
             this.distanceToPlayer = Math.sqrt((MW.PLAYER.x-this.x) * (MW.PLAYER.x-this.x) + (MW.PLAYER.y-this.y) * (MW.PLAYER.y-this.y));
-            MW.ENEMY2.d = this.distanceToPlayer;
+            MW.ENEMYd[2] = this.distanceToPlayer;
             if(this.distanceToPlayer < 40)
             {
                 var actionTo = new cc.MoveTo(2, cc.p(MW.PLAYER.x, MW.PLAYER.y));
