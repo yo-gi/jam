@@ -8,7 +8,7 @@ var Player = cc.Sprite.extend({
         this.velX = 0;
         this.velY = 0;
         this.speed = 4.5;
-        this.friction = 0.85;
+        this.friction = 0.9;
         this.gameTicks = 0;
         this.closest = 0;
         this.tileWidth = map01['tilewidth'];
@@ -30,7 +30,7 @@ var Player = cc.Sprite.extend({
 
         //cc.log(MW.VIEWPORT.x + " " + MW.VIEWPORT.y);
         var degreesangle = angle * (180/Math.PI);
-        cc.log("degrees: " + degreesangle);
+        //cc.log("degrees: " + degreesangle);
         this.setRotation(degreesangle);
         if (MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) {
             if (this.velY < this.speed) {

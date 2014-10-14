@@ -1,5 +1,6 @@
 var map03 = { "height":30,
-    keyMap: [0, res.tile_4, res.tile_3, res.tile_5, res.tile_1, 0, res.tile_7, res.tile_6, res.tile_8],
+    //keyMap: [0, res.tile_4, res.tile_3, res.tile_5, res.tile_1, 0, res.tile_7, res.tile_6, res.tile_8],
+    keyMap: [0, res.tile_8, res.tile_7, res.tile_5, res.tile_1, 0, res.tile_4, res.tile_6, res.tile_3],
     // 4 is rock.png, 1 is lwall.png, 6 is upwall.png, 3 is center.png, 2 is rwall.png, 8 is downwall.png, 7 is starttile.png
     "layers":[
     {
